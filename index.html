@@ -4,25 +4,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Army Burger - Sturdy Burgers | Amman, Jordan</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Ops+One&family=Rajdhani:wght@400;600;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<title>Army Burger – Sturdy Burgers · Amman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;600;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --army-dark: #1a1f0e;
-    --army-green: #2d3a1a;
-    --army-mid: #3d4e22;
-    --army-olive: #4a5c28;
-    --army-light: #6b7c3a;
-    --gold: #c9a227;
-    --gold-light: #e8c547;
-    --gold-pale: #f5e199;
-    --cream: #f0ead6;
-    --red: #8b1a1a;
-    --text-light: #d4c89a;
-    --text-dim: #8a8a6a;
+    --army-dark:   #0d1a0e;
+    --army-green:  #1e3a1e;
+    --army-mid:    #2d5a2d;
+    --army-light:  #4a7c4a;
+    --gold:        #c9a84c;
+    --gold-light:  #f0c866;
+    --cream:       #f5f0e8;
+    --white:       #ffffff;
+    --wa-green:    #25d366;
+    --red-accent:  #c0392b;
   }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+- { margin:0; padding:0; box-sizing:border-box; }
 
 html { scroll-behavior: smooth; }
 
@@ -33,1698 +32,974 @@ font-family: ‘Cairo’, sans-serif;
 overflow-x: hidden;
 }
 
-/* TEXTURE OVERLAY */
-body::before {
-content: ‘’;
-position: fixed;
-inset: 0;
-background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.08’/%3E%3C/svg%3E”);
-pointer-events: none;
-z-index: 9999;
-opacity: 0.4;
-}
-
-/* NAVBAR */
+/* ── NAVBAR ── */
 nav {
-position: fixed;
-top: 0;
-width: 100%;
-z-index: 1000;
-background: rgba(15, 18, 8, 0.95);
-border-bottom: 2px solid var(–gold);
-padding: 0 2rem;
-display: flex;
-align-items: center;
-justify-content: space-between;
-height: 65px;
+position: fixed; top:0; left:0; right:0; z-index:100;
+background: rgba(13,26,14,.95);
 backdrop-filter: blur(10px);
+border-bottom: 2px solid var(–gold);
+display: flex; align-items: center; justify-content: space-between;
+padding: 12px 24px;
 }
-
 .nav-logo {
-display: flex;
-align-items: center;
-gap: 12px;
-text-decoration: none;
-}
-
-.nav-logo-img {
-width: 45px;
-height: 45px;
-border-radius: 50%;
-border: 2px solid var(–gold);
-background: var(–army-green);
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: ‘Black Ops One’, cursive;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.6rem;
 color: var(–gold);
-font-size: 14px;
-font-weight: bold;
+letter-spacing: 3px;
 }
+.nav-logo span { color: var(–white); }
+.nav-stars { color: var(–gold); font-size: .9rem; letter-spacing:4px; }
 
-.nav-brand {
-font-family: ‘Black Ops One’, cursive;
-color: var(–gold);
-font-size: 1.2rem;
-letter-spacing: 2px;
-}
-
-.nav-links {
-display: flex;
-gap: 2rem;
-list-style: none;
-}
-
-.nav-links a {
-color: var(–text-light);
-text-decoration: none;
-font-family: ‘Cairo’, sans-serif;
-font-weight: 600;
-font-size: 0.9rem;
-letter-spacing: 1px;
-transition: color 0.3s;
-position: relative;
-}
-
-.nav-links a::after {
-content: ‘’;
-position: absolute;
-bottom: -4px;
-left: 0;
-right: 0;
-height: 2px;
-background: var(–gold);
-transform: scaleX(0);
-transition: transform 0.3s;
-}
-
-.nav-links a:hover { color: var(–gold); }
-.nav-links a:hover::after { transform: scaleX(1); }
-
-.nav-cta {
-background: var(–gold);
-color: var(–army-dark) !important;
-padding: 8px 20px;
-border-radius: 2px;
-font-weight: 700 !important;
-transition: all 0.3s !important;
-}
-
-.nav-cta:hover {
-background: var(–gold-light) !important;
-color: var(–army-dark) !important;
-transform: translateY(-1px);
-box-shadow: 0 4px 15px rgba(201,162,39,0.4);
-}
-
-/* HERO */
+/* ── HERO ── */
 .hero {
 min-height: 100vh;
-position: relative;
-display: flex;
-align-items: center;
-justify-content: center;
-text-align: center;
-overflow: hidden;
-padding-top: 65px;
-}
-
-.hero-bg {
-position: absolute;
-inset: 0;
 background:
-radial-gradient(ellipse at 50% 0%, rgba(74,92,40,0.5) 0%, transparent 60%),
-radial-gradient(ellipse at 0% 100%, rgba(44,56,26,0.4) 0%, transparent 50%),
-linear-gradient(160deg, #0d1008 0%, #1a2310 40%, #0f150a 100%);
-}
-
-/* Camo pattern */
-.hero-bg::before {
-content: ‘’;
-position: absolute;
-inset: 0;
-background-image:
-radial-gradient(ellipse 80px 60px at 10% 20%, rgba(50,65,30,0.3) 0%, transparent 100%),
-radial-gradient(ellipse 120px 80px at 80% 10%, rgba(40,52,22,0.25) 0%, transparent 100%),
-radial-gradient(ellipse 100px 70px at 60% 70%, rgba(55,70,32,0.2) 0%, transparent 100%),
-radial-gradient(ellipse 90px 65px at 25% 80%, rgba(45,58,25,0.25) 0%, transparent 100%);
-}
-
-/* Barbed wire lines */
-.hero-bg::after {
-content: ‘’;
-position: absolute;
-bottom: 0;
-left: 0;
-right: 0;
-height: 4px;
-background: repeating-linear-gradient(
-90deg,
-var(–gold) 0px,
-var(–gold) 10px,
-transparent 10px,
-transparent 20px
-);
-opacity: 0.5;
-}
-
-.hero-content {
+radial-gradient(ellipse at 50% 0%, rgba(74,124,74,.35) 0%, transparent 65%),
+radial-gradient(ellipse at 80% 80%, rgba(201,168,76,.12) 0%, transparent 50%),
+linear-gradient(160deg, #0d1a0e 0%, #1a2e1a 50%, #0d1a0e 100%);
+display: flex; flex-direction: column; align-items: center; justify-content: center;
+text-align: center;
+padding: 100px 24px 60px;
 position: relative;
-z-index: 2;
-max-width: 800px;
-padding: 2rem;
-animation: heroFadeIn 1.2s ease forwards;
+overflow: hidden;
 }
 
-@keyframes heroFadeIn {
-from { opacity: 0; transform: translateY(40px); }
-to { opacity: 1; transform: translateY(0); }
+/* camo texture overlay */
+.hero::before {
+content:’’;
+position:absolute; inset:0;
+background-image:
+repeating-linear-gradient(45deg, rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 2px, transparent 2px, transparent 20px),
+repeating-linear-gradient(-45deg, rgba(255,255,255,.01) 0px, rgba(255,255,255,.01) 1px, transparent 1px, transparent 15px);
+pointer-events:none;
 }
 
 .hero-badge {
 display: inline-block;
 border: 1px solid var(–gold);
-color: var(–gold);
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 0.75rem;
+color: var(–gold-light);
+font-family: ‘Oswald’, sans-serif;
+font-size: .75rem;
 letter-spacing: 4px;
-text-transform: uppercase;
 padding: 6px 20px;
-margin-bottom: 1.5rem;
-position: relative;
+margin-bottom: 28px;
+text-transform: uppercase;
+animation: fadeDown .8s ease both;
 }
 
-.hero-badge::before, .hero-badge::after {
-content: ‘★’;
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-color: var(–gold);
-font-size: 10px;
-}
-.hero-badge::before { left: -18px; }
-.hero-badge::after { right: -18px; }
-
-.hero-title {
-font-family: ‘Black Ops One’, cursive;
-font-size: clamp(3rem, 10vw, 7rem);
-color: var(–gold);
-line-height: 0.9;
-text-shadow:
-0 0 40px rgba(201,162,39,0.3),
-3px 3px 0 rgba(0,0,0,0.5);
-letter-spacing: 2px;
-margin-bottom: 0.5rem;
+.hero h1 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(4rem, 16vw, 9rem);
+line-height: .95;
+color: var(–white);
+text-shadow: 0 4px 40px rgba(201,168,76,.4), 0 0 80px rgba(74,124,74,.3);
+letter-spacing: 4px;
+animation: fadeDown .8s .15s ease both;
 }
 
-.hero-subtitle {
-font-family: ‘Bebas Neue’, cursive;
-font-size: clamp(1rem, 3vw, 1.8rem);
-color: var(–text-light);
+.hero-tagline {
+font-family: ‘Oswald’, sans-serif;
+font-size: 1rem;
 letter-spacing: 6px;
-margin-bottom: 2rem;
-opacity: 0.8;
+color: var(–gold);
+margin: 16px 0 8px;
+text-transform: uppercase;
+animation: fadeDown .8s .25s ease both;
 }
 
-.hero-desc {
-font-family: ‘Cairo’, sans-serif;
-font-size: 1.1rem;
-color: var(–text-light);
-max-width: 500px;
-margin: 0 auto 2.5rem;
-line-height: 1.8;
+.hero-sub {
+font-size: 1rem;
+color: rgba(245,240,232,.7);
+margin-bottom: 8px;
+animation: fadeDown .8s .3s ease both;
+}
+.hero-sub-ar {
+font-size: 1.05rem;
+color: rgba(245,240,232,.85);
+margin-bottom: 36px;
+animation: fadeDown .8s .35s ease both;
 }
 
-.hero-buttons {
-display: flex;
-gap: 1rem;
-justify-content: center;
-flex-wrap: wrap;
+.hero-btns {
+display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 320px;
+animation: fadeDown .8s .45s ease both;
 }
 
 .btn-primary {
-background: var(–gold);
-color: var(–army-dark);
-padding: 14px 32px;
+background: var(–wa-green);
+color: #fff;
 font-family: ‘Cairo’, sans-serif;
-font-weight: 900;
-font-size: 1rem;
+font-size: 1.1rem;
+font-weight: 700;
+padding: 16px 24px;
+border: none; border-radius: 4px;
+cursor: pointer;
 text-decoration: none;
-border-radius: 2px;
-transition: all 0.3s;
-display: flex;
-align-items: center;
-gap: 8px;
-box-shadow: 0 4px 20px rgba(201,162,39,0.3);
+display: flex; align-items: center; justify-content: center; gap: 10px;
+letter-spacing: 1px;
+box-shadow: 0 4px 20px rgba(37,211,102,.4);
+transition: transform .2s, box-shadow .2s;
 }
-
-.btn-primary:hover {
-background: var(–gold-light);
-transform: translateY(-2px);
-box-shadow: 0 8px 30px rgba(201,162,39,0.5);
-}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,.55); }
 
 .btn-secondary {
 background: transparent;
-color: var(–gold);
-padding: 14px 32px;
+color: var(–gold-light);
 font-family: ‘Cairo’, sans-serif;
-font-weight: 700;
 font-size: 1rem;
-text-decoration: none;
+font-weight: 600;
+padding: 14px 24px;
 border: 2px solid var(–gold);
-border-radius: 2px;
-transition: all 0.3s;
-display: flex;
-align-items: center;
-gap: 8px;
-}
-
-.btn-secondary:hover {
-background: rgba(201,162,39,0.1);
-transform: translateY(-2px);
-}
-
-.btn-whatsapp {
-background: #25d366;
-color: white;
-padding: 14px 32px;
-font-family: ‘Cairo’, sans-serif;
-font-weight: 900;
-font-size: 1rem;
+border-radius: 4px;
+cursor: pointer;
 text-decoration: none;
-border-radius: 2px;
-transition: all 0.3s;
-display: flex;
-align-items: center;
-gap: 8px;
-box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+display: flex; align-items: center; justify-content: center; gap: 10px;
+transition: background .2s, color .2s;
 }
+.btn-secondary:hover { background: var(–gold); color: var(–army-dark); }
 
-.btn-whatsapp:hover {
-background: #1ebe5d;
-transform: translateY(-2px);
-box-shadow: 0 8px 30px rgba(37,211,102,0.5);
-}
-
-/* SCROLL INDICATOR */
-.scroll-indicator {
-position: absolute;
-bottom: 30px;
-left: 50%;
-transform: translateX(-50%);
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 8px;
-color: var(–gold);
-font-size: 0.7rem;
+.btn-ig {
+background: transparent;
+color: var(–cream);
+font-family: ‘Oswald’, sans-serif;
+font-size: .85rem;
 letter-spacing: 3px;
-animation: bounce 2s infinite;
+text-decoration: none;
+display: flex; align-items: center; justify-content: center; gap: 8px;
+padding: 8px 0;
+opacity: .75;
+transition: opacity .2s;
 }
+.btn-ig:hover { opacity: 1; }
 
-@keyframes bounce {
-0%, 100% { transform: translateX(-50%) translateY(0); }
-50% { transform: translateX(-50%) translateY(8px); }
-}
-
-/* SECTION STYLES */
-section {
-padding: 80px 2rem;
-max-width: 1200px;
-margin: 0 auto;
-}
-
-.section-header {
-text-align: center;
-margin-bottom: 60px;
-}
-
-.section-tag {
-display: inline-block;
-background: rgba(201,162,39,0.1);
-border: 1px solid rgba(201,162,39,0.3);
-color: var(–gold);
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 0.75rem;
-letter-spacing: 4px;
-text-transform: uppercase;
-padding: 5px 16px;
-margin-bottom: 1rem;
-}
-
-.section-title {
-font-family: ‘Black Ops One’, cursive;
-font-size: clamp(2rem, 5vw, 3.5rem);
-color: var(–gold);
-letter-spacing: 2px;
-text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
-}
-
-.section-divider {
-width: 80px;
-height: 3px;
-background: linear-gradient(90deg, transparent, var(–gold), transparent);
-margin: 1rem auto;
-}
-
-/* STATS BAR */
-.stats-bar {
+/* ── STATS BAR ── */
+.stats {
 background: var(–army-green);
 border-top: 2px solid var(–gold);
 border-bottom: 2px solid var(–gold);
-padding: 2rem;
 display: grid;
 grid-template-columns: repeat(4, 1fr);
-gap: 2rem;
 text-align: center;
+padding: 20px 0;
+}
+.stat-item { padding: 12px 8px; border-left: 1px solid rgba(201,168,76,.3); }
+.stat-item:last-child { border-right: 1px solid rgba(201,168,76,.3); }
+.stat-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 2rem;
+color: var(–gold-light);
+display: block;
+}
+.stat-lbl {
+font-size: .72rem;
+color: rgba(245,240,232,.65);
+display: block;
+margin-top: 2px;
 }
 
-.stat-item {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 0.5rem;
-}
+/* ── SECTION WRAPPER ── */
+section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
 
-.stat-number {
-font-family: ‘Black Ops One’, cursive;
-font-size: 2.5rem;
+.section-header {
+text-align: center;
+margin-bottom: 48px;
+}
+.section-badge {
+font-family: ‘Oswald’, sans-serif;
+font-size: .75rem;
+letter-spacing: 5px;
 color: var(–gold);
+text-transform: uppercase;
+display: block;
+margin-bottom: 10px;
+}
+.section-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(2.2rem, 6vw, 3.5rem);
+color: var(–white);
+letter-spacing: 3px;
 line-height: 1;
 }
-
-.stat-label {
-font-family: ‘Cairo’, sans-serif;
-font-size: 0.85rem;
-color: var(–text-dim);
-letter-spacing: 2px;
+.section-line {
+width: 60px; height: 3px;
+background: var(–gold);
+margin: 16px auto 0;
 }
 
-/* MENU SECTION */
-#menu {
-max-width: 1200px;
-}
+/* ── MENU ── */
+.menu-section { background: var(–army-dark); }
 
-.menu-section {
-margin-bottom: 70px;
+.menu-category {
+margin-bottom: 56px;
 }
-
-.menu-category-header {
-display: flex;
-align-items: center;
-gap: 1.5rem;
-margin-bottom: 2rem;
-padding-bottom: 1rem;
-border-bottom: 2px solid rgba(201,162,39,0.3);
+.cat-header {
+display: flex; align-items: center; gap: 16px;
+margin-bottom: 28px;
 }
-
-.menu-category-icon {
-width: 60px;
-height: 60px;
-background: var(–army-green);
-border: 2px solid var(–gold);
-border-radius: 4px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.8rem;
-flex-shrink: 0;
-}
-
-.menu-category-title {
-font-family: ‘Black Ops One’, cursive;
+.cat-icon { font-size: 1.8rem; }
+.cat-title {
+font-family: ‘Bebas Neue’, sans-serif;
 font-size: 2rem;
-color: var(–gold);
+color: var(–gold-light);
 letter-spacing: 3px;
 }
-
-.menu-category-desc {
-font-size: 0.85rem;
-color: var(–text-dim);
-margin-top: 4px;
+.cat-title-ar {
+font-size: .85rem;
+color: rgba(245,240,232,.55);
+margin-top: 2px;
 }
+.cat-line { flex:1; height:1px; background: linear-gradient(to left, transparent, var(–gold)); }
 
-/* BURGER CARDS */
-.burger-grid {
+.items-grid {
 display: grid;
-grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-gap: 1.5rem;
+grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+gap: 16px;
 }
 
-.burger-card {
-background: linear-gradient(145deg, var(–army-green), var(–army-dark));
-border: 1px solid rgba(201,162,39,0.2);
-border-radius: 4px;
-overflow: hidden;
-transition: all 0.3s;
+.menu-card {
+background: var(–army-green);
+border: 1px solid rgba(201,168,76,.25);
+border-radius: 6px;
+padding: 20px;
 position: relative;
+transition: border-color .2s, transform .2s;
 }
+.menu-card:hover { border-color: var(–gold); transform: translateY(-3px); }
 
-.burger-card:hover {
-border-color: var(–gold);
-transform: translateY(-4px);
-box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(201,162,39,0.15);
-}
-
-.burger-card-img {
-height: 160px;
-background: var(–army-mid);
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 4rem;
-position: relative;
-overflow: hidden;
-}
-
-.burger-card-img::before {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: linear-gradient(to bottom, transparent 50%, rgba(15,18,8,0.8) 100%);
-}
-
-.burger-card-body {
-padding: 1.2rem;
-}
-
-.burger-card-name {
-font-family: ‘Black Ops One’, cursive;
-font-size: 1rem;
-color: var(–gold);
-letter-spacing: 1px;
-margin-bottom: 0.8rem;
-}
-
-.burger-card-stars {
-color: var(–gold);
-font-size: 0.7rem;
-margin-bottom: 0.8rem;
-}
-
-.burger-prices {
-display: flex;
-flex-direction: column;
-gap: 4px;
-}
-
-.price-row {
-display: flex;
-justify-content: space-between;
-align-items: center;
-font-size: 0.82rem;
-color: var(–text-light);
-padding: 3px 0;
-border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.price-row:last-child { border-bottom: none; }
-
-.price-amount {
-color: var(–gold-light);
-font-weight: 700;
-font-family: ‘Rajdhani’, sans-serif;
-}
-
-.burger-card-badge {
-position: absolute;
-top: 12px;
-right: 12px;
-background: var(–gold);
-color: var(–army-dark);
-font-family: ‘Black Ops One’, cursive;
-font-size: 0.55rem;
-letter-spacing: 1px;
-padding: 3px 8px;
-border-radius: 2px;
-}
-
-/* SPECIAL CARDS */
-.special-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-gap: 1.2rem;
-}
-
-.special-card {
-background: var(–army-green);
-border: 1px solid rgba(201,162,39,0.25);
-border-radius: 4px;
-padding: 1.5rem;
-text-align: center;
-transition: all 0.3s;
-}
-
-.special-card:hover {
-border-color: var(–gold);
-background: var(–army-mid);
-}
-
-.special-card-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
-
-.special-card-name {
-font-family: ‘Black Ops One’, cursive;
-color: var(–gold);
-font-size: 0.9rem;
-letter-spacing: 1px;
-margin-bottom: 0.5rem;
-}
-
-.special-card-price {
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 1.5rem;
-font-weight: 700;
-color: var(–gold-light);
-}
-
-.special-card-desc {
-font-size: 0.78rem;
-color: var(–text-dim);
-margin-top: 0.5rem;
-}
-
-/* FRIES GRID */
-.fries-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-gap: 1.2rem;
-}
-
-.fries-card {
-background: var(–army-green);
-border: 1px solid rgba(201,162,39,0.2);
-border-radius: 4px;
-padding: 1.5rem;
-text-align: center;
-transition: all 0.3s;
-}
-
-.fries-card:hover {
-border-color: var(–gold);
-transform: translateY(-3px);
-}
-
-.fries-card.featured {
-background: linear-gradient(135deg, rgba(201,162,39,0.15), var(–army-green));
-border-color: var(–gold);
-}
-
-.fries-card-name {
-font-family: ‘Black Ops One’, cursive;
-color: var(–gold);
-font-size: 0.9rem;
-letter-spacing: 1px;
-margin: 0.8rem 0 0.5rem;
-}
-
-.fries-card-price {
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 1.6rem;
-font-weight: 700;
-color: var(–gold-light);
-}
-
-/* DRINKS GRID */
-.drinks-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-gap: 1.2rem;
-}
-
-.drink-card {
-background: var(–army-green);
-border: 1px solid rgba(201,162,39,0.2);
-border-radius: 4px;
-padding: 1.5rem;
-text-align: center;
-transition: all 0.3s;
-}
-
-.drink-card:hover {
-border-color: var(–gold);
-transform: translateY(-3px);
-}
-
-.drink-name {
-font-family: ‘Black Ops One’, cursive;
-color: var(–gold);
-font-size: 0.9rem;
-margin: 0.8rem 0 0.4rem;
-}
-
-.drink-variants {
-font-size: 0.75rem;
-color: var(–text-dim);
-margin-bottom: 0.8rem;
-line-height: 1.6;
-}
-
-.drink-price {
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 1.4rem;
-font-weight: 700;
-color: var(–gold-light);
-}
-
-/* REVIEWS */
-#reviews {
-background: var(–army-green);
-max-width: 100%;
-padding: 80px 2rem;
-border-top: 2px solid rgba(201,162,39,0.3);
-border-bottom: 2px solid rgba(201,162,39,0.3);
-}
-
-.reviews-inner {
-max-width: 1200px;
-margin: 0 auto;
-}
-
-.reviews-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-.review-card {
-background: var(–army-dark);
-border: 1px solid rgba(201,162,39,0.2);
-border-radius: 4px;
-padding: 1.8rem;
-position: relative;
-transition: all 0.3s;
-}
-
-.review-card:hover {
-border-color: var(–gold);
-box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-}
-
-.review-card::before {
-content: ‘”’;
-position: absolute;
-top: -10px;
-right: 20px;
-font-family: ‘Black Ops One’, cursive;
-font-size: 5rem;
-color: var(–gold);
-opacity: 0.15;
-line-height: 1;
-}
-
-.review-stars {
-color: var(–gold);
-font-size: 1rem;
-letter-spacing: 2px;
-margin-bottom: 1rem;
-}
-
-.review-text {
-color: var(–text-light);
-line-height: 1.8;
-font-size: 0.95rem;
-margin-bottom: 1.2rem;
-}
-
-.review-author {
-display: flex;
-align-items: center;
-gap: 12px;
-}
-
-.review-avatar {
-width: 42px;
-height: 42px;
-border-radius: 50%;
-background: var(–army-mid);
-border: 2px solid var(–gold);
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: ‘Black Ops One’, cursive;
-font-size: 1rem;
-color: var(–gold);
-flex-shrink: 0;
-}
-
-.review-name {
-font-weight: 700;
-color: var(–cream);
-font-size: 0.9rem;
-}
-
-.review-date {
-font-size: 0.75rem;
-color: var(–text-dim);
-}
-
-/* LOCATIONS */
-#locations {
-max-width: 1200px;
-}
-
-.locations-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-gap: 1.5rem;
-margin-top: 2rem;
-}
-
-.location-card {
-background: var(–army-green);
-border: 1px solid rgba(201,162,39,0.2);
-border-radius: 4px;
-padding: 2rem;
-text-align: center;
-transition: all 0.3s;
-}
-
-.location-card:hover {
-border-color: var(–gold);
-transform: translateY(-4px);
-box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-}
-
-.location-number {
-width: 50px;
-height: 50px;
-background: var(–gold);
-color: var(–army-dark);
-font-family: ‘Black Ops One’, cursive;
-font-size: 1.2rem;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-margin: 0 auto 1rem;
-}
-
-.location-name {
-font-family: ‘Black Ops One’, cursive;
-color: var(–gold);
+.menu-card-name {
+font-family: ‘Oswald’, sans-serif;
 font-size: 1.1rem;
+color: var(–white);
 letter-spacing: 1px;
-margin-bottom: 0.5rem;
+margin-bottom: 10px;
 }
-
-.location-desc {
-font-size: 0.85rem;
-color: var(–text-dim);
-margin-bottom: 1rem;
-line-height: 1.6;
+.menu-card-prices {
+display: flex; flex-direction: column; gap: 4px;
 }
-
-.location-link {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-background: rgba(201,162,39,0.1);
-border: 1px solid rgba(201,162,39,0.4);
-color: var(–gold);
-text-decoration: none;
-padding: 8px 16px;
-font-size: 0.8rem;
-letter-spacing: 1px;
-font-weight: 600;
-border-radius: 2px;
-transition: all 0.3s;
+.price-row {
+display: flex; justify-content: space-between; align-items: center;
+font-size: .82rem;
+color: rgba(245,240,232,.7);
+padding: 2px 0;
+border-bottom: 1px solid rgba(255,255,255,.06);
 }
-
-.location-link:hover {
-background: var(–gold);
-color: var(–army-dark);
+.price-row:last-child { border-bottom: none; }
+.price-val {
+color: var(–gold-light);
+font-weight: 700;
+font-family: ‘Oswald’, sans-serif;
+font-size: .9rem;
 }
-
-/* HOURS & CONTACT */
-.info-section {
-background: var(–army-dark);
-border: 2px solid rgba(201,162,39,0.3);
-border-radius: 4px;
-padding: 3rem 2rem;
-max-width: 700px;
-margin: 0 auto;
-text-align: center;
+.price-row.highlight {
+background: rgba(201,168,76,.12);
+padding: 5px 8px;
+border-radius: 3px;
+margin: 4px -4px;
+border-bottom: none;
 }
+.price-row.highlight .price-val { color: var(–gold); font-size: 1rem; }
 
-.hours-badge {
-display: inline-flex;
-align-items: center;
+/* appetizer grid */
+.app-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 gap: 12px;
+}
+.app-card {
 background: var(–army-green);
-border: 1px solid var(–gold);
-padding: 12px 24px;
-border-radius: 4px;
-margin: 1.5rem 0;
+border: 1px solid rgba(201,168,76,.2);
+border-radius: 6px;
+padding: 16px;
+display: flex; justify-content: space-between; align-items: center;
+transition: border-color .2s;
 }
+.app-card:hover { border-color: var(–gold); }
+.app-name { font-size: .9rem; color: var(–cream); }
+.app-price { font-family: ‘Oswald’, sans-serif; color: var(–gold-light); font-size: 1rem; font-weight: 600; }
 
-.hours-icon { font-size: 1.5rem; }
-
-.hours-text {
-font-family: ‘Black Ops One’, cursive;
-font-size: 1.6rem;
-color: var(–gold);
-letter-spacing: 2px;
+/* fries & drinks */
+.fd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.fd-card {
+background: var(–army-green);
+border: 1px solid rgba(201,168,76,.2);
+border-radius: 6px;
+padding: 16px;
+text-align: center;
+transition: border-color .2s;
 }
+.fd-card:hover { border-color: var(–gold); }
+.fd-card-name { font-family: ‘Oswald’, sans-serif; color: var(–white); font-size: .95rem; margin-bottom: 6px; }
+.fd-card-price { color: var(–gold-light); font-weight: 700; font-size: 1.1rem; }
+.fd-card-sub { font-size: .78rem; color: rgba(245,240,232,.55); margin-top: 4px; }
 
-.contact-buttons {
-display: flex;
-gap: 1rem;
-justify-content: center;
-flex-wrap: wrap;
-margin-top: 2rem;
+.fight-fries {
+background: linear-gradient(135deg, #1e3a1e, #2d5a2d);
+border: 2px solid var(–gold);
+border-radius: 6px;
+padding: 20px;
+text-align: center;
+margin-top: 12px;
 }
+.fight-fries .fd-card-name { font-size: 1.2rem; color: var(–gold-light); }
+.fight-fries .fd-card-price { font-size: 1.4rem; }
+.fight-fries .fd-card-sub { color: rgba(245,240,232,.7); }
 
-/* FOOTER */
-footer {
-background: #0a0d05;
-border-top: 2px solid var(–gold);
-padding: 3rem 2rem 2rem;
+/* ── SPECIAL ITEMS ── */
+.special-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.special-card {
+background: linear-gradient(135deg, var(–army-green), #1a3a1a);
+border: 2px solid var(–gold);
+border-radius: 6px;
+padding: 24px;
 text-align: center;
 }
+.special-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.5rem; color: var(–gold-light); margin-bottom: 8px; letter-spacing: 2px; }
+.special-desc { font-size: .85rem; color: rgba(245,240,232,.65); margin-bottom: 12px; }
+.special-prices { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.special-p { background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.4); border-radius: 4px; padding: 6px 14px; font-family: ‘Oswald’, sans-serif; }
+.special-p-lbl { font-size: .7rem; color: rgba(245,240,232,.5); display:block; }
+.special-p-val { font-size: 1rem; color: var(–gold-light); font-weight: 700; }
 
-.footer-logo {
-font-family: ‘Black Ops One’, cursive;
-font-size: 2rem;
-color: var(–gold);
-letter-spacing: 4px;
-margin-bottom: 0.5rem;
+/* ── LOCATIONS ── */
+.locations-section {
+background: linear-gradient(180deg, var(–army-dark) 0%, var(–army-green) 100%);
+padding: 64px 24px;
 }
-
-.footer-slogan {
-color: var(–text-dim);
-font-size: 0.85rem;
-letter-spacing: 3px;
-margin-bottom: 2rem;
+.loc-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 16px;
+max-width: 900px;
+margin: 0 auto;
 }
-
-.footer-links {
-display: flex;
-justify-content: center;
-gap: 2rem;
-flex-wrap: wrap;
-margin-bottom: 2rem;
-}
-
-.footer-links a {
-color: var(–text-dim);
+.loc-card {
+background: rgba(13,26,14,.7);
+border: 1px solid rgba(201,168,76,.3);
+border-radius: 6px;
+padding: 24px;
+text-align: center;
+transition: border-color .2s, transform .2s;
 text-decoration: none;
-font-size: 0.85rem;
-transition: color 0.3s;
 }
-
-.footer-links a:hover { color: var(–gold); }
-
-.footer-social {
-display: flex;
-justify-content: center;
-gap: 1rem;
-margin-bottom: 2rem;
+.loc-card:hover { border-color: var(–gold); transform: translateY(-3px); }
+.loc-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 3rem;
+color: rgba(201,168,76,.25);
+line-height: 1;
 }
-
-.social-btn {
-width: 44px;
-height: 44px;
-border: 1px solid rgba(201,162,39,0.4);
-border-radius: 4px;
-display: flex;
-align-items: center;
-justify-content: center;
-color: var(–gold);
-text-decoration: none;
-font-size: 1.2rem;
-transition: all 0.3s;
-background: var(–army-green);
+.loc-name {
+font-family: ‘Oswald’, sans-serif;
+font-size: 1.1rem;
+color: var(–gold-light);
+letter-spacing: 2px;
+margin: 8px 0 4px;
 }
-
-.social-btn:hover {
+.loc-name-ar {
+font-size: 1rem;
+color: var(–cream);
+margin-bottom: 16px;
+}
+.loc-btn {
+display: inline-flex; align-items: center; gap: 6px;
 background: var(–gold);
 color: var(–army-dark);
-border-color: var(–gold);
-}
-
-.footer-copy {
-color: var(–text-dim);
-font-size: 0.75rem;
-border-top: 1px solid rgba(255,255,255,0.05);
-padding-top: 1.5rem;
-}
-
-/* STICKY WHATSAPP */
-.sticky-whatsapp {
-position: fixed;
-bottom: 24px;
-left: 24px;
-width: 60px;
-height: 60px;
-background: #25d366;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.8rem;
-box-shadow: 0 4px 20px rgba(37,211,102,0.5);
-z-index: 999;
+font-family: ‘Cairo’, sans-serif;
+font-size: .82rem;
+font-weight: 700;
+padding: 8px 18px;
+border-radius: 3px;
 text-decoration: none;
-transition: all 0.3s;
-animation: pulse 2s infinite;
+transition: background .2s;
+}
+.loc-btn:hover { background: var(–gold-light); }
+
+/* ── HOURS ── */
+.hours-box {
+background: var(–army-green);
+border: 2px solid var(–gold);
+border-radius: 8px;
+padding: 32px;
+text-align: center;
+max-width: 480px;
+margin: 0 auto;
+}
+.hours-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+.hours-title { font-family: ‘Oswald’, sans-serif; font-size: .8rem; letter-spacing: 5px; color: var(–gold); text-transform: uppercase; margin-bottom: 12px; }
+.hours-time { font-family: ‘Bebas Neue’, sans-serif; font-size: 3rem; color: var(–white); letter-spacing: 4px; }
+.hours-sub { font-size: .85rem; color: rgba(245,240,232,.6); margin-top: 8px; }
+
+/* ── REVIEWS ── */
+.reviews-section { background: var(–army-dark); padding: 64px 24px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; max-width: 900px; margin: 0 auto; }
+.review-card {
+background: var(–army-green);
+border: 1px solid rgba(201,168,76,.2);
+border-radius: 6px;
+padding: 24px;
+position: relative;
+}
+.review-stars { color: var(–gold); font-size: 1.1rem; margin-bottom: 12px; }
+.review-text { font-size: .9rem; color: rgba(245,240,232,.85); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+.review-author { font-family: ‘Oswald’, sans-serif; font-size: .8rem; letter-spacing: 2px; color: var(–gold); text-transform: uppercase; }
+.review-quote {
+position: absolute; top: 16px; left: 20px;
+font-size: 4rem;
+color: rgba(201,168,76,.1);
+font-family: Georgia, serif;
+line-height: 1;
 }
 
-.sticky-whatsapp:hover {
-transform: scale(1.1);
-box-shadow: 0 8px 30px rgba(37,211,102,0.7);
+/* ── CTA FOOTER STRIP ── */
+.cta-strip {
+background: var(–army-green);
+border-top: 3px solid var(–gold);
+border-bottom: 3px solid var(–gold);
+padding: 48px 24px;
+text-align: center;
+}
+.cta-strip h2 { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.5rem; color: var(–white); letter-spacing: 3px; margin-bottom: 8px; }
+.cta-strip p { color: rgba(245,240,232,.65); margin-bottom: 28px; font-size: .95rem; }
+.cta-btns { display: flex; flex-direction: column; gap: 14px; align-items: center; }
+.cta-btns .btn-primary, .cta-btns .btn-secondary { width: 100%; max-width: 320px; }
+
+/* ── FOOTER ── */
+footer {
+background: var(–army-dark);
+border-top: 1px solid rgba(201,168,76,.2);
+padding: 32px 24px;
+text-align: center;
+}
+.footer-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.6rem; color: var(–gold); letter-spacing: 4px; margin-bottom: 8px; }
+.footer-phone { color: var(–gold-light); font-family: ‘Oswald’, sans-serif; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 16px; }
+.footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 20px; }
+.footer-links a { color: rgba(245,240,232,.5); text-decoration: none; font-size: .85rem; transition: color .2s; }
+.footer-links a:hover { color: var(–gold); }
+.footer-copy { font-size: .75rem; color: rgba(245,240,232,.3); }
+
+/* ── DIVIDER ── */
+.divider {
+width: 100%; height: 2px;
+background: linear-gradient(to right, transparent, var(–gold), transparent);
+margin: 0;
 }
 
-@keyframes pulse {
-0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
-50% { box-shadow: 0 4px 30px rgba(37,211,102,0.8), 0 0 0 8px rgba(37,211,102,0.1); }
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+from { opacity:0; transform: translateY(-18px); }
+to   { opacity:1; transform: translateY(0); }
 }
 
-/* DECORATIVE */
-.ammo-divider {
-display: flex;
-align-items: center;
-gap: 1rem;
-margin: 3rem 0;
-opacity: 0.4;
-}
-
-.ammo-line {
-flex: 1;
-height: 1px;
-background: repeating-linear-gradient(90deg, var(–gold) 0, var(–gold) 6px, transparent 6px, transparent 12px);
-}
-
-.ammo-star { color: var(–gold); font-size: 0.8rem; letter-spacing: 4px; }
-
-/* MOBILE */
-@media (max-width: 768px) {
-.nav-links { display: none; }
-.stats-bar { grid-template-columns: repeat(2, 1fr); }
-.hero-buttons { flex-direction: column; align-items: center; }
-.burger-grid, .special-grid { grid-template-columns: 1fr 1fr; }
-.reviews-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-.burger-grid, .special-grid, .fries-grid, .drinks-grid { grid-template-columns: 1fr; }
-}
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(–army-dark); }
+::-webkit-scrollbar-thumb { background: var(–gold); border-radius: 3px; }
 </style>
 
 </head>
 <body>
 
-<!-- STICKY WHATSAPP -->
-
-<a href="https://wa.me/962790700706" target="_blank" class="sticky-whatsapp" title="تواصل معنا على واتساب">📱</a>
-
 <!-- NAVBAR -->
 
 <nav>
-  <a href="#" class="nav-logo">
-    <div class="nav-logo-img">AB</div>
-    <span class="nav-brand">ARMY BURGER</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#menu">المنيو</a></li>
-    <li><a href="#reviews">التقييمات</a></li>
-    <li><a href="#locations">الفروع</a></li>
-    <li><a href="#contact">تواصل معنا</a></li>
-    <li><a href="https://wa.me/962790700706" target="_blank" class="nav-cta">اطلب الآن</a></li>
-  </ul>
+  <div class="nav-logo">ARMY <span>BURGER</span></div>
+  <div class="nav-stars">★ ★ ★</div>
 </nav>
 
 <!-- HERO -->
 
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-badge">STURDY BURGERS • AMMAN JORDAN</div>
-    <h1 class="hero-title">ARMY<br>BURGER</h1>
-    <p class="hero-subtitle">⭐ FUEL YOUR HUNGER ⭐</p>
-    <p class="hero-desc">Where Every Bite is a Battle Won<br>أفضل برغر في عمّان — معركة النكهة لصالحك دائماً 🏆🍔</p>
-    <div class="hero-buttons">
-      <a href="#menu" class="btn-primary">📋 شاهد المنيو</a>
-      <a href="https://wa.me/962790700706" target="_blank" class="btn-whatsapp">📲 اطلب عبر واتساب</a>
-      <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="btn-secondary">📸 انستقرام</a>
-    </div>
+<section class="hero" style="max-width:100%; padding-top:110px;">
+  <div class="hero-badge">★ STURDY BURGERS · AMMAN JORDAN ★</div>
+  <h1>ARMY<br>BURGER</h1>
+  <div class="hero-tagline">⭐ FUEL YOUR HUNGER ⭐</div>
+  <p class="hero-sub">Where Every Bite is a Battle Won</p>
+  <p class="hero-sub-ar">أفضل برغر في عمّان — معركة النكهة لصالحك دائماً 🍔🏆</p>
+  <div class="hero-btns">
+    <a href="https://wa.me/96279700706" target="_blank" class="btn-primary">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      اطلب عبر واتساب
+    </a>
+    <a href="#menu" class="btn-secondary">
+      🍔 شاهد القائدة العسكرية (المنيو)
+    </a>
+    <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="btn-ig">
+      📸 @armyburgerjo على إنستقرام
+    </a>
   </div>
-  <div class="scroll-indicator">
-    <span>▼</span>
-    <span>SCROLL</span>
-  </div>
-</div>
+</section>
 
-<!-- STATS BAR -->
+<!-- STATS -->
 
-<div class="stats-bar">
+<div class="stats">
   <div class="stat-item">
-    <span class="stat-number">86K+</span>
-    <span class="stat-label">متابع انستقرام</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-number">5</span>
-    <span class="stat-label">فروع في عمّان</span>
+    <span class="stat-num">86K+</span>
+    <span class="stat-lbl">متابع انستقرام</span>
   </div>
   <div class="stat-item">
-    <span class="stat-number">⭐ 4.9</span>
-    <span class="stat-label">تقييم العملاء</span>
+    <span class="stat-num">5</span>
+    <span class="stat-lbl">فروع في عمّان</span>
   </div>
   <div class="stat-item">
-    <span class="stat-number">11AM</span>
-    <span class="stat-label">يفتح حتى 1 صباحاً</span>
+    <span class="stat-num">11AM</span>
+    <span class="stat-lbl">يفتح حتى 1 صباحاً</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">4.9 ⭐</span>
+    <span class="stat-lbl">تقييم العملاء</span>
   </div>
 </div>
 
-<!-- MENU SECTION -->
+<div class="divider"></div>
 
-<section id="menu">
-  <div class="section-header">
-    <div class="section-tag">★ BATTLEFIELD MENU ★</div>
-    <h2 class="section-title">القائدة العسكرية</h2>
-    <div class="section-divider"></div>
-    <p style="color:var(--text-dim); margin-top:0.5rem;">اختر سلاحك — كل وجبة معركة مكسوبة</p>
-  </div>
+<!-- MENU -->
 
-  <!-- BEEF BURGERS -->
-
-  <div class="menu-section">
-    <div class="menu-category-header">
-      <div class="menu-category-icon">🍔</div>
-      <div>
-        <div class="menu-category-title">BEEF BURGER</div>
-        <div class="menu-category-desc">برغر لحم بقري طازج — مطبوخ بدقة عسكرية</div>
-      </div>
+<div id="menu" style="background: var(--army-dark); padding: 64px 0 0;">
+  <div style="max-width:900px; margin:0 auto; padding: 0 24px;">
+    <div class="section-header">
+      <span class="section-badge">★ BATTLEFIELD MENU ★</span>
+      <h2 class="section-title">القيادة العسكرية</h2>
+      <p style="color:rgba(245,240,232,.55); margin-top:10px; font-size:.9rem;">اختر سلاحك — كل وجبة معركة مكسوبة</p>
+      <div class="section-line"></div>
     </div>
-    <div class="burger-grid">
 
 ```
-  <div class="burger-card">
-    <div class="burger-card-img">🍔<div class="burger-card-badge">CLASSIC</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">ARMY BURGER</div>
-      <div class="burger-card-stars">★★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
+<!-- BEEF BURGER -->
+<div class="menu-category">
+  <div class="cat-header">
+    <span class="cat-icon">🍔</span>
+    <div>
+      <div class="cat-title">BEEF BURGER</div>
+      <div class="cat-title-ar">برغر لحم بقري طازج — مطبوخ بدقة عسكرية</div>
+    </div>
+    <div class="cat-line"></div>
+  </div>
+  <div class="items-grid">
+    <!-- Army Burger -->
+    <div class="menu-card">
+      <div class="menu-card-name">★ ARMY BURGER</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <!-- Last Soldier -->
+    <div class="menu-card">
+      <div class="menu-card-name">★ LAST SOLDIER</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <!-- Snow Army -->
+    <div class="menu-card">
+      <div class="menu-card-name">★ SNOW ARMY</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <!-- Fire Army -->
+    <div class="menu-card">
+      <div class="menu-card-name">🔥 FIRE ARMY</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <!-- Flavour War -->
+    <div class="menu-card">
+      <div class="menu-card-name">💥 FLAVOUR WAR</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <!-- Marines Burger -->
+    <div class="menu-card">
+      <div class="menu-card-name">⚓ MARINES BURGER</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <!-- Avocados Explosion -->
+    <div class="menu-card">
+      <div class="menu-card-name">🥑 AVOCADOS EXPLOSION</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <!-- Big Man -->
+    <div class="menu-card">
+      <div class="menu-card-name">💪 BIG MAN</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>BIG MAN Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>Big Man Sandwich</span><span class="price-val">4.00 JD</span></div>
       </div>
     </div>
   </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">🥩<div class="burger-card-badge">HERO</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">LAST SOLDIER</div>
-      <div class="burger-card-stars">★★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">❄️<div class="burger-card-badge">WINTER</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">SNOW ARMY</div>
-      <div class="burger-card-stars">★★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">🔥<div class="burger-card-badge">HOT</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">FIRE ARMY</div>
-      <div class="burger-card-stars">★★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">⚔️<div class="burger-card-badge">SPICY</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">FLAVOUR WAR</div>
-      <div class="burger-card-stars">★★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">🌊<div class="burger-card-badge">SPECIAL</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">MARINES BURGER</div>
-      <div class="burger-card-stars">★★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">🥑<div class="burger-card-badge">PREMIUM</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">AVOCADOS EXPLOSION</div>
-      <div class="burger-card-stars">★★★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">💪<div class="burger-card-badge">BIG</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">BIG MAN</div>
-      <div class="burger-card-stars">★★★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة BIG MAN</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش BIG MAN</span><span class="price-amount">4.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-</div>
-```
-
-  </div>
-
-  <div class="ammo-divider"><div class="ammo-line"></div><div class="ammo-star">★ ★ ★</div><div class="ammo-line"></div></div>
-
-  <!-- CHICKEN BURGERS -->
-
-  <div class="menu-section">
-    <div class="menu-category-header">
-      <div class="menu-category-icon">🐔</div>
-      <div>
-        <div class="menu-category-title">CHICKEN BURGER</div>
-        <div class="menu-category-desc">دجاج طازج — مقلي ومشوي بطعم لا يُقاوم</div>
-      </div>
-    </div>
-    <div class="burger-grid">
-
-```
-  <div class="burger-card">
-    <div class="burger-card-img">🍗<div class="burger-card-badge">CRISPY</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">CRISPY CHICKEN</div>
-      <div class="burger-card-stars">★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">🌶️<div class="burger-card-badge">SPICY</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">SPICY CRISPY CHICKEN</div>
-      <div class="burger-card-stars">★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">🔥<div class="burger-card-badge">GRILLED</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">GRILL CHICKEN</div>
-      <div class="burger-card-stars">★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="burger-card">
-    <div class="burger-card-img">🎖️<div class="burger-card-badge">ELITE</div></div>
-    <div class="burger-card-body">
-      <div class="burger-card-name">S.W.A.T</div>
-      <div class="burger-card-stars">★★</div>
-      <div class="burger-prices">
-        <div class="price-row"><span>وجبة 200 غرام</span><span class="price-amount">6.00 JD</span></div>
-        <div class="price-row"><span>وجبة 150 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>وجبة 100 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 200 غرام</span><span class="price-amount">5.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 150 غرام</span><span class="price-amount">4.00 JD</span></div>
-        <div class="price-row"><span>ساندويش 100 غرام</span><span class="price-amount">3.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-
 </div>
 
-<!-- Mini Burger & Kids -->
-<div class="special-grid" style="margin-top:1.5rem;">
-  <div class="special-card">
-    <div class="special-card-icon">🍔</div>
-    <div class="special-card-name">MINI BURGER (4 PCS)</div>
-    <div class="special-card-price">6.00 JD</div>
-    <div class="special-card-desc">أي قطعة من اختيار + بصلة</div>
+<!-- CHICKEN BURGER -->
+<div class="menu-category">
+  <div class="cat-header">
+    <span class="cat-icon">🍗</span>
+    <div>
+      <div class="cat-title">CHICKEN BURGER</div>
+      <div class="cat-title-ar">برغر دجاج — مقرمش ولذيذ</div>
+    </div>
+    <div class="cat-line"></div>
   </div>
-  <div class="special-card">
-    <div class="special-card-icon">🍔🍔</div>
-    <div class="special-card-name">MINI BURGER (8 PCS)</div>
-    <div class="special-card-price">10.00 JD</div>
-    <div class="special-card-desc">أي قطعة من اختيار</div>
-  </div>
-  <div class="special-card">
-    <div class="special-card-icon">👶</div>
-    <div class="special-card-name">KIDS MEAL</div>
-    <div class="special-card-price">2.75 JD</div>
-    <div class="special-card-desc">وجبة خاصة للصغار</div>
-  </div>
-</div>
-```
-
-  </div>
-
-  <div class="ammo-divider"><div class="ammo-line"></div><div class="ammo-star">★ ★ ★</div><div class="ammo-line"></div></div>
-
-  <!-- APPETIZERS -->
-
-  <div class="menu-section">
-    <div class="menu-category-header">
-      <div class="menu-category-icon">🍟</div>
-      <div>
-        <div class="menu-category-title">APPETIZER</div>
-        <div class="menu-category-desc">مقبلات المعركة — أسلحة خفيفة قبل الهجوم الكبير</div>
+  <div class="items-grid">
+    <div class="menu-card">
+      <div class="menu-card-name">🥇 CRISPY CHICKEN</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
       </div>
     </div>
+    <div class="menu-card">
+      <div class="menu-card-name">🌶️ SPICY CRISPY CHICKEN</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-name">🔥 GRILL CHICKEN</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-name">⚡ S.W.A.T</div>
+      <div class="menu-card-prices">
+        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
+        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Special Items -->
+  <div style="margin-top:20px;">
     <div class="special-grid">
       <div class="special-card">
-        <div class="special-card-icon">🍗</div>
-        <div class="special-card-name">BONELESS (6 PCS)</div>
-        <div class="special-card-price">3.85 JD</div>
-        <div class="special-card-desc">BBQ · Honey Mustard · Crazy · Buffalo · Sweet & Chili · Ranch · Dynamite</div>
+        <div class="special-title">🍔 MINI BURGER</div>
+        <div class="special-desc">أي قطعة من اختيار + بصلة</div>
+        <div class="special-prices">
+          <div class="special-p">
+            <span class="special-p-lbl">4 قطع</span>
+            <span class="special-p-val">6.00 JD</span>
+          </div>
+          <div class="special-p">
+            <span class="special-p-lbl">8 قطع</span>
+            <span class="special-p-val">10.00 JD</span>
+          </div>
+        </div>
       </div>
       <div class="special-card">
-        <div class="special-card-icon">🍗</div>
-        <div class="special-card-name">WINGS (10 PCS)</div>
-        <div class="special-card-price">3.85 JD</div>
-        <div class="special-card-desc">BBQ · Honey Mustard · Crazy · Buffalo · Sweet & Chili · Ranch · Dynamite</div>
-      </div>
-      <div class="special-card">
-        <div class="special-card-icon">🍖</div>
-        <div class="special-card-name">TENDERS (4 PCS)</div>
-        <div class="special-card-price">4.90 JD</div>
-        <div class="special-card-desc">BBQ · Honey Mustard · Crazy · Buffalo · Sweet & Chili · Ranch · Dynamite</div>
-      </div>
-      <div class="special-card">
-        <div class="special-card-icon">🧀</div>
-        <div class="special-card-name">MOZZARELLA STICKS (5 PCS)</div>
-        <div class="special-card-price">2.80 JD</div>
-        <div class="special-card-desc"></div>
-      </div>
-      <div class="special-card">
-        <div class="special-card-icon">🌶️</div>
-        <div class="special-card-name">JALAPENO BITES (5 PCS)</div>
-        <div class="special-card-price">2.80 JD</div>
-        <div class="special-card-desc"></div>
-      </div>
-      <div class="special-card">
-        <div class="special-card-icon">🧅</div>
-        <div class="special-card-name">ONION RINGS (5 PCS)</div>
-        <div class="special-card-price">2.80 JD</div>
-        <div class="special-card-desc"></div>
-      </div>
-      <div class="special-card">
-        <div class="special-card-icon">🥔</div>
-        <div class="special-card-name">HASHBROWN (4 PCS)</div>
-        <div class="special-card-price">2.75 JD</div>
-        <div class="special-card-desc"></div>
-      </div>
-      <div class="special-card" style="border-color:var(--gold); background:rgba(201,162,39,0.1);">
-        <div class="special-card-icon">💣</div>
-        <div class="special-card-name">MOLOTOV BOX</div>
-        <div class="special-card-price">6.50 JD</div>
-        <div class="special-card-desc">موزاريلا ستيكس · هاشبراون · بانيس · دلنقات · الكبابي · بطاطا ويدجز · جبنة</div>
+        <div class="special-title">👶 KIDS MEAL</div>
+        <div class="special-desc">وجبة مخصصة للأطفال</div>
+        <div class="special-prices">
+          <div class="special-p">
+            <span class="special-p-lbl">الوجبة</span>
+            <span class="special-p-val">2.75 JD</span>
+          </div>
+        </div>
       </div>
     </div>
-
-```
-<!-- War Criminal Salad -->
-<div class="special-grid" style="margin-top:1.2rem;">
-  <div class="special-card" style="border-color: rgba(201,162,39,0.5);">
-    <div class="special-card-icon">🥗</div>
-    <div class="special-card-name">WAR CRIMINAL SALAD</div>
-    <div class="special-card-price">3.75 JD</div>
-    <div class="special-card-desc">طازج ومشبع</div>
   </div>
-  <div class="special-card" style="border-color: rgba(201,162,39,0.5);">
-    <div class="special-card-icon">🥗</div>
-    <div class="special-card-name">WAR CRIMINAL SALAD + دجاج</div>
-    <div class="special-card-price">4.75 JD</div>
-    <div class="special-card-desc">مع صوص اختيار</div>
+</div>
+
+<!-- APPETIZERS -->
+<div class="menu-category">
+  <div class="cat-header">
+    <span class="cat-icon">💥</span>
+    <div>
+      <div class="cat-title">APPETIZER</div>
+      <div class="cat-title-ar">المقبلات</div>
+    </div>
+    <div class="cat-line"></div>
+  </div>
+  <div class="app-grid">
+    <div class="app-card"><span class="app-name">Boneless (6 pcs)</span><span class="app-price">3.85 JD</span></div>
+    <div class="app-card"><span class="app-name">Wings (10 pcs)</span><span class="app-price">3.85 JD</span></div>
+    <div class="app-card"><span class="app-name">Tenders (4 pcs)</span><span class="app-price">4.90 JD</span></div>
+    <div class="app-card"><span class="app-name">Mozzarella Sticks (5 pcs)</span><span class="app-price">2.80 JD</span></div>
+    <div class="app-card"><span class="app-name">Jalapeño Bites (5 pcs)</span><span class="app-price">2.80 JD</span></div>
+    <div class="app-card"><span class="app-name">Onion Rings (5 pcs)</span><span class="app-price">2.80 JD</span></div>
+    <div class="app-card"><span class="app-name">Hashbrown (4 pcs)</span><span class="app-price">2.75 JD</span></div>
+  </div>
+  <!-- Molotov Box & Salad -->
+  <div style="margin-top: 16px; display:grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap:14px;">
+    <div class="menu-card" style="border-color: rgba(192,57,43,.5);">
+      <div class="menu-card-name" style="color: #e74c3c;">💣 MOLOTOV BOX</div>
+      <div style="font-size:.8rem; color:rgba(245,240,232,.6); margin-bottom:8px;">موزاريلا ستيكس، هاشبرون، بيبس، بطاطا كيرلي، بصلة حلقات ودجاج</div>
+      <div class="price-row highlight"><span>Box</span><span class="price-val">6.50 JD</span></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-name" style="color: #27ae60;">🥗 WAR CRIMINAL SALAD</div>
+      <div class="menu-card-prices">
+        <div class="price-row"><span>سلطة</span><span class="price-val">3.75 JD</span></div>
+        <div class="price-row highlight"><span>مع دجاج</span><span class="price-val">4.75 JD</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FRIES -->
+<div class="menu-category">
+  <div class="cat-header">
+    <span class="cat-icon">🍟</span>
+    <div>
+      <div class="cat-title">FRIES</div>
+      <div class="cat-title-ar">البطاطا</div>
+    </div>
+    <div class="cat-line"></div>
+  </div>
+  <div class="fd-grid">
+    <div class="fd-card">
+      <div class="fd-card-name">French Fries</div>
+      <div class="fd-card-price">1.00 JD</div>
+    </div>
+    <div class="fd-card">
+      <div class="fd-card-name">Curly Fries</div>
+      <div class="fd-card-price">1.50 JD</div>
+    </div>
+    <div class="fd-card">
+      <div class="fd-card-name">Wedge Fries</div>
+      <div class="fd-card-price">1.50 JD</div>
+    </div>
+  </div>
+  <div class="fight-fries">
+    <div class="fd-card-name">💥 FIGHT FRIES</div>
+    <div class="fd-card-price">2.95 JD</div>
+    <div class="fd-card-sub">بطاطا مقلية مع جبنة سائلة وصوص خاص، بصل أخضر، بيف بيكن</div>
+  </div>
+</div>
+
+<!-- DRINKS -->
+<div class="menu-category">
+  <div class="cat-header">
+    <span class="cat-icon">🥤</span>
+    <div>
+      <div class="cat-title">DRINK</div>
+      <div class="cat-title-ar">المشروبات</div>
+    </div>
+    <div class="cat-line"></div>
+  </div>
+  <div class="fd-grid">
+    <div class="fd-card">
+      <div class="fd-card-name">Soft Drink</div>
+      <div class="fd-card-price">0.50 JD</div>
+      <div class="fd-card-sub">Matrix Cola / Cola Zero<br>Matrix Up / Up Zero / Orange</div>
+    </div>
+    <div class="fd-card">
+      <div class="fd-card-name">Water</div>
+      <div class="fd-card-price">0.35 JD</div>
+    </div>
   </div>
 </div>
 ```
 
-  </div>
+  </div><!-- end max-width wrapper -->
+</div><!-- end menu section -->
 
-  <div class="ammo-divider"><div class="ammo-line"></div><div class="ammo-star">★ ★ ★</div><div class="ammo-line"></div></div>
+<div class="divider"></div>
 
-  <!-- FRIES -->
+<!-- LOCATIONS -->
 
-  <div class="menu-section">
-    <div class="menu-category-header">
-      <div class="menu-category-icon">🍟</div>
-      <div>
-        <div class="menu-category-title">FRIES</div>
-        <div class="menu-category-desc">بطاطا بأشكال ونكهات عسكرية متنوعة</div>
-      </div>
-    </div>
-    <div class="fries-grid">
-      <div class="fries-card">
-        <div style="font-size:2.5rem;">🍟</div>
-        <div class="fries-card-name">FRENCH FRIES</div>
-        <div class="fries-card-price">1.00 JD</div>
-      </div>
-      <div class="fries-card">
-        <div style="font-size:2.5rem;">🌀</div>
-        <div class="fries-card-name">CURLY FRIES</div>
-        <div class="fries-card-price">1.50 JD</div>
-      </div>
-      <div class="fries-card">
-        <div style="font-size:2.5rem;">🔷</div>
-        <div class="fries-card-name">WEDGE FRIES</div>
-        <div class="fries-card-price">1.50 JD</div>
-      </div>
-      <div class="fries-card featured">
-        <div style="font-size:2.5rem;">💥</div>
-        <div class="fries-card-name">FIGHT FRIES</div>
-        <div class="fries-card-price">2.95 JD</div>
-        <div style="font-size:0.78rem; color:var(--text-dim); margin-top:6px;">بطاطا مقلية مع جبنة + صوص خاص + بصل أخضر + بيف بيكن</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="ammo-divider"><div class="ammo-line"></div><div class="ammo-star">★ ★ ★</div><div class="ammo-line"></div></div>
-
-  <!-- DRINKS -->
-
-  <div class="menu-section">
-    <div class="menu-category-header">
-      <div class="menu-category-icon">🥤</div>
-      <div>
-        <div class="menu-category-title">DRINKS</div>
-        <div class="menu-category-desc">مشروبات باردة تواكب المعركة</div>
-      </div>
-    </div>
-    <div class="drinks-grid">
-      <div class="drink-card">
-        <div style="font-size:2.5rem;">🥤</div>
-        <div class="drink-name">SOFT DRINK</div>
-        <div class="drink-variants">Matrix Cola · Matrix Cola Zero<br>Matrix Up · Matrix Up Zero · Matrix Orange</div>
-        <div class="drink-price">0.50 JD</div>
-      </div>
-      <div class="drink-card">
-        <div style="font-size:2.5rem;">💧</div>
-        <div class="drink-name">WATER</div>
-        <div class="drink-variants">مياه معدنية</div>
-        <div class="drink-price">0.35 JD</div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<!-- REVIEWS SECTION -->
-
-<div id="reviews" style="background:var(--army-green); border-top:2px solid rgba(201,162,39,0.3); border-bottom:2px solid rgba(201,162,39,0.3); padding:80px 2rem;">
-  <div style="max-width:1200px; margin:0 auto;">
+<div class="locations-section">
+  <div style="max-width:900px; margin:0 auto; padding:0 24px;">
     <div class="section-header">
-      <div class="section-tag">★ FIELD REPORTS ★</div>
-      <h2 class="section-title">ماذا قال الجنود</h2>
-      <div class="section-divider"></div>
+      <span class="section-badge">📍 OUR LOCATIONS</span>
+      <h2 class="section-title">مقرات الجيش</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="loc-grid">
+      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
+        <div class="loc-num">01</div>
+        <div class="loc-name">7TH CIRCLE</div>
+        <div class="loc-name-ar">الدوار السابع</div>
+        <span class="loc-btn">📍 افتح الخريطة</span>
+      </a>
+      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
+        <div class="loc-num">02</div>
+        <div class="loc-name">AL JUBAIHA</div>
+        <div class="loc-name-ar">الجبيهة</div>
+        <span class="loc-btn">📍 افتح الخريطة</span>
+      </a>
+      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
+        <div class="loc-num">03</div>
+        <div class="loc-name">MARJ AL HAMAM</div>
+        <div class="loc-name-ar">مرج الحمام</div>
+        <span class="loc-btn">📍 افتح الخريطة</span>
+      </a>
+      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
+        <div class="loc-num">04</div>
+        <div class="loc-name">TABARBOUR</div>
+        <div class="loc-name-ar">تبربور</div>
+        <span class="loc-btn">📍 افتح الخريطة</span>
+      </a>
+      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
+        <div class="loc-num">05</div>
+        <div class="loc-name">AIRPORT ROAD</div>
+        <div class="loc-name-ar">دوار الواحة — The Good Food Court</div>
+        <span class="loc-btn">📍 افتح الخريطة</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOURS -->
+
+<div style="background: var(--army-dark); padding: 64px 24px;">
+  <div style="max-width:900px; margin:0 auto;">
+    <div class="section-header">
+      <span class="section-badge">🕐 SERVICE HOURS</span>
+      <h2 class="section-title">أوقات الخدمة</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="hours-box">
+      <span class="hours-icon">⏱️</span>
+      <div class="hours-title">نفتح أبوابنا يومياً</div>
+      <div class="hours-time">11:00 AM — 1:00 AM</div>
+      <div class="hours-sub">من الأحد إلى السبت · جميع الفروع</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+
+<div class="reviews-section">
+  <div style="max-width:900px; margin:0 auto; padding:0 24px;">
+    <div class="section-header">
+      <span class="section-badge">⭐ BATTLE REPORTS</span>
+      <h2 class="section-title">ما يقوله الجيش</h2>
+      <div class="section-line"></div>
     </div>
     <div class="reviews-grid">
-
-```
-  <div class="review-card">
-    <div class="review-stars">★★★★★</div>
-    <p class="review-text">والله أكلت من كتير مطاعم في عمّان بس Army Burger شي تاني! البرغر طازج، الخبز طري، والصوص خرافي. الـ Avocados Explosion بقول عليها منذكر سنة!</p>
-    <div class="review-author">
-      <div class="review-avatar">م</div>
-      <div>
-        <div class="review-name">محمد الخالدي</div>
-        <div class="review-date">عمّان، الأردن</div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">أفضل برغر جربته في عمّان! اللحم طازج والنكهة لا تُوصف. Army Burger ما بخيب ظنك أبداً.</div>
+        <div class="review-author">— أحمد، عمّان</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Fire Army هو المفضل عندي! الحرارة مظبوطة والجبنة تتسرب بكل لقمة. هذا مش برغر، هذا تجربة!</div>
+        <div class="review-author">— سارة، الدوار السابع</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Fight Fries + Marines Burger = كومبو مثالي. الخدمة سريعة والأكل دائماً طازج. بجي كل أسبوع!</div>
+        <div class="review-author">— محمد، الجبيهة</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Avocados Explosion شي آخر! مزيج الأفوكادو مع اللحم البقري خلّاني أرجع مرتين بنفس اليوم 😅</div>
+        <div class="review-author">— ليلى، مرج الحمام</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">الكميات كبيرة والأسعار ممتازة. الـ Molotov Box يكفي شخصين وبسعر خرافي. Army Burger الأفضل!</div>
+        <div class="review-author">— عمر، تبربور</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">طلبت عبر الواتساب ووصل الطلب سخن وممتاز. الـ Crispy Chicken هو الأفضل على الإطلاق في عمّان!</div>
+        <div class="review-author">— نور، الدوار الخامس</div>
       </div>
     </div>
-  </div>
-
-  <div class="review-card">
-    <div class="review-stars">★★★★★</div>
-    <p class="review-text">أفضل برغر جربته بحياتي! الـ Fire Army يجنن — حار بس بنفس الوقت فيه نكهة عميقة. الخدمة سريعة والسعر منطقي جداً. رح أرجع دايماً!</p>
-    <div class="review-author">
-      <div class="review-avatar">س</div>
-      <div>
-        <div class="review-name">سارة العمري</div>
-        <div class="review-date">الدوار السابع</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="review-card">
-    <div class="review-stars">★★★★★</div>
-    <p class="review-text">جربت الـ Molotov Box مع صحابي وانبسطنا كتير! الكمية كبيرة والمكونات طازجة. الـ wings بالدايناميت صوص أشهى شي أكلته. 10/10 بدون مجاملة.</p>
-    <div class="review-author">
-      <div class="review-avatar">أ</div>
-      <div>
-        <div class="review-name">أحمد بني هاني</div>
-        <div class="review-date">مرج الحمام</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="review-card">
-    <div class="review-stars">★★★★★</div>
-    <p class="review-text">من أحسن المطاعم في عمّان بجد. اللحم نظيف وطازج، الجبنة تذوب بالفم، والفرايز ذهبية ومقرمشة. الـ Last Soldier اسمه مش عبثاً — آخر ما بدك تأكله!</p>
-    <div class="review-author">
-      <div class="review-avatar">ر</div>
-      <div>
-        <div class="review-name">رنا الشوبكي</div>
-        <div class="review-date">الجبيهة</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="review-card">
-    <div class="review-stars">★★★★★</div>
-    <p class="review-text">التوصيل سريع جداً والأكل وصل ساخن تماماً. SWAT Chicken برغر جربته وهو شي مختلف كلياً عن أي مطعم ثاني. مبروك عليكم وبيستاهلوا كل نجمة!</p>
-    <div class="review-author">
-      <div class="review-avatar">خ</div>
-      <div>
-        <div class="review-name">خالد أبو ريم</div>
-        <div class="review-date">تبربور</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="review-card">
-    <div class="review-stars">★★★★★</div>
-    <p class="review-text">زرت فرع الدوار السابع وجو المكان رائع والموظفين محترمين. الـ Mini Burger للمشاركة مع العيلة كان خيار حلو وبسعر معقول. شكراً Army Burger!</p>
-    <div class="review-author">
-      <div class="review-avatar">ن</div>
-      <div>
-        <div class="review-name">نور الحياري</div>
-        <div class="review-date">الدوار السابع</div>
-      </div>
-    </div>
-  </div>
-
-</div>
-```
-
   </div>
 </div>
 
-<!-- LOCATIONS SECTION -->
+<div class="divider"></div>
 
-<section id="locations">
-  <div class="section-header">
-    <div class="section-tag">★ HEADQUARTERS ★</div>
-    <h2 class="section-title">مراكز القيادة</h2>
-    <div class="section-divider"></div>
-    <p style="color:var(--text-dim);">5 فروع في أنحاء عمّان — قريب منك دايماً</p>
+<!-- CTA STRIP -->
+
+<div class="cta-strip">
+  <h2>جاهز تخوض المعركة؟ 🍔</h2>
+  <p>اطلب الآن عبر واتساب أو تابعنا على إنستقرام</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/96279700706" target="_blank" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      اطلب عبر واتساب — 079 0700 706
+    </a>
+    <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="btn-secondary">
+      📸 تابعنا على إنستقرام @armyburgerjo
+    </a>
   </div>
-  <div class="locations-grid">
-    <div class="location-card">
-      <div class="location-number">1</div>
-      <div class="location-name">المقر الأول</div>
-      <div class="location-desc">الدوار السابع</div>
-      <a href="https://maps.app.goo.gl" target="_blank" class="location-link">📍 خريطة</a>
-    </div>
-    <div class="location-card">
-      <div class="location-number">2</div>
-      <div class="location-name">المقر الثاني</div>
-      <div class="location-desc">الجبيهة</div>
-      <a href="https://maps.app.goo.gl" target="_blank" class="location-link">📍 خريطة</a>
-    </div>
-    <div class="location-card">
-      <div class="location-number">3</div>
-      <div class="location-name">المقر الثالث</div>
-      <div class="location-desc">مرج الحمام</div>
-      <a href="https://maps.app.goo.gl" target="_blank" class="location-link">📍 خريطة</a>
-    </div>
-    <div class="location-card">
-      <div class="location-number">4</div>
-      <div class="location-name">المقر الرابع</div>
-      <div class="location-desc">تبربور · طريق المطار</div>
-      <a href="https://maps.app.goo.gl" target="_blank" class="location-link">📍 خريطة</a>
-    </div>
-    <div class="location-card">
-      <div class="location-number">5</div>
-      <div class="location-name">المقر الخامس</div>
-      <div class="location-desc">دوار الواحة — The Good Food Court<br>بجانب طواحين الهوا</div>
-      <a href="https://maps.app.goo.gl" target="_blank" class="location-link">📍 خريطة</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT / HOURS -->
-
-<section id="contact" style="max-width:1200px; margin:0 auto; padding:60px 2rem;">
-  <div class="info-section">
-    <div class="section-tag">★ OPERATIONS CENTER ★</div>
-    <h2 class="section-title" style="margin-top:1rem;">اتصل بنا</h2>
-    <div class="section-divider"></div>
-
-```
-<div class="hours-badge">
-  <span class="hours-icon">⏰</span>
-  <span class="hours-text">11:00 AM — 1:00 AM</span>
 </div>
-<p style="color:var(--text-dim); font-size:0.85rem; margin-bottom:0.5rem;">يومياً — جاهزين للمعركة</p>
-<p style="color:var(--gold); font-size:1.1rem; font-weight:700; margin:1rem 0;">📞 079 0700 706</p>
-
-<div class="contact-buttons">
-  <a href="https://wa.me/962790700706" target="_blank" class="btn-whatsapp">📲 واتساب</a>
-  <a href="tel:+962790700706" class="btn-primary">📞 اتصل بنا</a>
-  <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="btn-secondary">📸 انستقرام</a>
-</div>
-```
-
-  </div>
-</section>
 
 <!-- FOOTER -->
 
 <footer>
   <div class="footer-logo">ARMY BURGER</div>
-  <div class="footer-slogan">STURDY BURGERS · AMMAN JORDAN</div>
+  <div class="footer-phone">+962 79 0700 706</div>
   <div class="footer-links">
+    <a href="https://www.instagram.com/armyburgerjo" target="_blank">Instagram</a>
+    <a href="https://wa.me/96279700706" target="_blank">WhatsApp</a>
     <a href="#menu">المنيو</a>
-    <a href="#reviews">التقييمات</a>
     <a href="#locations">الفروع</a>
-    <a href="https://wa.me/962790700706" target="_blank">واتساب</a>
-    <a href="https://www.instagram.com/armyburgerjo" target="_blank">انستقرام</a>
   </div>
-  <div class="footer-social">
-    <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="social-btn" title="Instagram">📸</a>
-    <a href="https://wa.me/962790700706" target="_blank" class="social-btn" title="WhatsApp">📲</a>
-    <a href="tel:+962790700706" class="social-btn" title="Call">📞</a>
-  </div>
-  <div class="footer-copy">
-    &copy; 2025 Army Burger · Amman, Jordan · جميع الحقوق محفوظة<br>
-    <span style="color:var(--gold); margin-top:6px; display:block;">Where Every Bite is a Battle Won 🏆🍔</span>
-  </div>
+  <div class="footer-copy">© 2025 Army Burger · Sturdy Burgers · Amman, Jordan · جميع الحقوق محفوظة</div>
 </footer>
-
-<script>
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // Navbar scroll effect
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.5)';
-    } else {
-      nav.style.boxShadow = 'none';
-    }
-  });
-
-  // Animate cards on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.burger-card, .special-card, .fries-card, .drink-card, .review-card, .location-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, border-color 0.3s, box-shadow 0.3s';
-    observer.observe(el);
-  });
-</script>
 
 </body>
 </html>
