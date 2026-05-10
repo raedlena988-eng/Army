@@ -4,985 +4,1496 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Army Burger – Sturdy Burgers · Amman</title>
+<title>Army Burger - Sturdy Burgers | عمّان، الأردن</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cairo:wght@400;600;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald:wght@300;400;500;600;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --army-dark:   #0d1a0e;
-    --army-green:  #1e3a1e;
-    --army-mid:    #2d5a2d;
-    --army-light:  #4a7c4a;
-    --gold:        #c9a84c;
-    --gold-light:  #f0c866;
-    --cream:       #f5f0e8;
-    --white:       #ffffff;
-    --wa-green:    #25d366;
-    --red-accent:  #c0392b;
+    --army-green: #2d3b1e;
+    --dark-green: #1a2410;
+    --olive: #4a5c2a;
+    --gold: #c8a84b;
+    --gold-light: #e8c96a;
+    --gold-dark: #9a7a2a;
+    --cream: #f5f0e0;
+    --red: #8b1a1a;
+    --bg: #0f1a08;
+    --text: #e8dfc0;
   }
 
-- { margin:0; padding:0; box-sizing:border-box; }
+- { margin: 0; padding: 0; box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 
 body {
-background: var(–army-dark);
-color: var(–cream);
+background: var(–bg);
+color: var(–text);
 font-family: ‘Cairo’, sans-serif;
 overflow-x: hidden;
 }
 
-/* ── NAVBAR ── */
-nav {
-position: fixed; top:0; left:0; right:0; z-index:100;
-background: rgba(13,26,14,.95);
-backdrop-filter: blur(10px);
-border-bottom: 2px solid var(–gold);
-display: flex; align-items: center; justify-content: space-between;
-padding: 12px 24px;
+/* NOISE TEXTURE OVERLAY */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 9999;
+opacity: 0.5;
 }
-.nav-logo {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 1.6rem;
-color: var(–gold);
-letter-spacing: 3px;
-}
-.nav-logo span { color: var(–white); }
-.nav-stars { color: var(–gold); font-size: .9rem; letter-spacing:4px; }
 
-/* ── HERO ── */
+/* NAV */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 1000;
+background: rgba(10, 16, 5, 0.92);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(200, 168, 75, 0.3);
+padding: 0 5%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 70px;
+}
+
+.nav-logo {
+font-family: ‘Black Ops One’, cursive;
+font-size: 1.4rem;
+color: var(–gold);
+letter-spacing: 2px;
+text-decoration: none;
+}
+
+.nav-links {
+display: flex;
+gap: 2rem;
+list-style: none;
+}
+
+.nav-links a {
+color: var(–text);
+text-decoration: none;
+font-family: ‘Cairo’, sans-serif;
+font-weight: 600;
+font-size: 0.9rem;
+letter-spacing: 1px;
+transition: color 0.3s;
+position: relative;
+}
+
+.nav-links a::after {
+content: ‘’;
+position: absolute;
+bottom: -4px; left: 0; right: 0;
+height: 1px;
+background: var(–gold);
+transform: scaleX(0);
+transition: transform 0.3s;
+}
+
+.nav-links a:hover { color: var(–gold); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+background: var(–gold);
+color: var(–dark-green);
+padding: 0.5rem 1.2rem;
+border-radius: 2px;
+font-family: ‘Cairo’, sans-serif;
+font-weight: 700;
+font-size: 0.85rem;
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 0.4rem;
+transition: background 0.3s, transform 0.2s;
+border: none;
+cursor: pointer;
+}
+
+.nav-cta:hover {
+background: var(–gold-light);
+transform: translateY(-1px);
+}
+
+/* HERO */
 .hero {
 min-height: 100vh;
-background:
-radial-gradient(ellipse at 50% 0%, rgba(74,124,74,.35) 0%, transparent 65%),
-radial-gradient(ellipse at 80% 80%, rgba(201,168,76,.12) 0%, transparent 50%),
-linear-gradient(160deg, #0d1a0e 0%, #1a2e1a 50%, #0d1a0e 100%);
-display: flex; flex-direction: column; align-items: center; justify-content: center;
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
 text-align: center;
-padding: 100px 24px 60px;
+overflow: hidden;
+padding-top: 70px;
+}
+
+.hero-bg {
+position: absolute;
+inset: 0;
+background:
+radial-gradient(ellipse 80% 60% at 50% 40%, rgba(74, 92, 42, 0.25) 0%, transparent 70%),
+radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200, 168, 75, 0.08) 0%, transparent 60%),
+linear-gradient(180deg, #0f1a08 0%, #1a2410 50%, #0f1a08 100%);
+}
+
+/* Camo pattern */
+.hero-bg::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background-image:
+radial-gradient(ellipse 120px 80px at 10% 20%, rgba(45,59,30,0.6) 0%, transparent 100%),
+radial-gradient(ellipse 180px 100px at 85% 15%, rgba(45,59,30,0.5) 0%, transparent 100%),
+radial-gradient(ellipse 100px 140px at 60% 70%, rgba(45,59,30,0.4) 0%, transparent 100%),
+radial-gradient(ellipse 150px 90px at 30% 85%, rgba(26,36,16,0.7) 0%, transparent 100%);
+opacity: 0.8;
+}
+
+.hero-stars {
+position: absolute;
+inset: 0;
+overflow: hidden;
+}
+
+.star {
+position: absolute;
+color: var(–gold);
+font-size: 1rem;
+animation: floatStar 6s ease-in-out infinite;
+opacity: 0.2;
+}
+
+@keyframes floatStar {
+0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+}
+
+.hero-content {
+position: relative;
+z-index: 2;
+max-width: 900px;
+padding: 2rem;
+}
+
+.hero-badge {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+background: rgba(200, 168, 75, 0.1);
+border: 1px solid rgba(200, 168, 75, 0.4);
+padding: 0.4rem 1rem;
+border-radius: 20px;
+font-size: 0.8rem;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 1.5rem;
+animation: fadeInDown 0.8s ease forwards;
+}
+
+.hero-title {
+font-family: ‘Black Ops One’, cursive;
+font-size: clamp(3.5rem, 10vw, 8rem);
+line-height: 0.9;
+color: var(–gold);
+text-shadow: 0 0 60px rgba(200, 168, 75, 0.3), 4px 4px 0px rgba(0,0,0,0.5);
+letter-spacing: 4px;
+animation: fadeInUp 0.8s 0.2s ease both;
+margin-bottom: 0.3rem;
+}
+
+.hero-subtitle {
+font-family: ‘Black Ops One’, cursive;
+font-size: clamp(1.5rem, 4vw, 3rem);
+color: var(–cream);
+letter-spacing: 8px;
+opacity: 0.7;
+animation: fadeInUp 0.8s 0.4s ease both;
+margin-bottom: 1.5rem;
+}
+
+.hero-tagline {
+font-size: 1.1rem;
+color: rgba(232, 223, 192, 0.7);
+font-weight: 300;
+letter-spacing: 2px;
+animation: fadeInUp 0.8s 0.6s ease both;
+margin-bottom: 3rem;
+}
+
+.hero-actions {
+display: flex;
+gap: 1rem;
+justify-content: center;
+flex-wrap: wrap;
+animation: fadeInUp 0.8s 0.8s ease both;
+}
+
+.btn-primary {
+background: var(–gold);
+color: var(–dark-green);
+padding: 1rem 2.5rem;
+font-family: ‘Cairo’, sans-serif;
+font-weight: 900;
+font-size: 1rem;
+border: none;
+cursor: pointer;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+transition: all 0.3s;
+letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+background: var(–gold-light);
+transform: translateY(-3px);
+box-shadow: 0 10px 30px rgba(200, 168, 75, 0.3);
+}
+
+.btn-whatsapp {
+background: #25D366;
+color: white;
+padding: 1rem 2.5rem;
+font-family: ‘Cairo’, sans-serif;
+font-weight: 900;
+font-size: 1rem;
+border: none;
+cursor: pointer;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+transition: all 0.3s;
+letter-spacing: 1px;
+}
+
+.btn-whatsapp:hover {
+background: #1fa854;
+transform: translateY(-3px);
+box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+}
+
+.btn-outline {
+background: transparent;
+color: var(–gold);
+padding: 1rem 2.5rem;
+font-family: ‘Cairo’, sans-serif;
+font-weight: 700;
+font-size: 1rem;
+border: 1px solid var(–gold);
+cursor: pointer;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+transition: all 0.3s;
+letter-spacing: 1px;
+}
+
+.btn-outline:hover {
+background: rgba(200, 168, 75, 0.1);
+transform: translateY(-3px);
+}
+
+.hero-divider {
+position: absolute;
+bottom: 0;
+left: 0; right: 0;
+height: 2px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+}
+
+/* SECTION STYLES */
+section { padding: 6rem 5%; }
+
+.section-header {
+text-align: center;
+margin-bottom: 4rem;
+}
+
+.section-label {
+font-family: ‘Oswald’, sans-serif;
+font-size: 0.75rem;
+letter-spacing: 5px;
+text-transform: uppercase;
+color: var(–gold);
+margin-bottom: 0.8rem;
+display: block;
+}
+
+.section-title {
+font-family: ‘Black Ops One’, cursive;
+font-size: clamp(2rem, 5vw, 3.5rem);
+color: var(–cream);
+letter-spacing: 3px;
+line-height: 1;
+}
+
+.section-title span { color: var(–gold); }
+
+.section-line {
+width: 80px;
+height: 2px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+margin: 1.2rem auto 0;
+}
+
+/* ABOUT */
+.about {
+background: linear-gradient(180deg, var(–bg) 0%, var(–dark-green) 50%, var(–bg) 100%);
+position: relative;
+}
+
+.about::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold-dark), transparent);
+}
+
+.about-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2rem;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.about-card {
+background: rgba(200, 168, 75, 0.05);
+border: 1px solid rgba(200, 168, 75, 0.15);
+padding: 2.5rem 2rem;
+text-align: center;
+position: relative;
+transition: all 0.3s;
+}
+
+.about-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 2px;
+background: var(–gold);
+transform: scaleX(0);
+transition: transform 0.3s;
+}
+
+.about-card:hover::before { transform: scaleX(1); }
+.about-card:hover {
+background: rgba(200, 168, 75, 0.08);
+transform: translateY(-5px);
+}
+
+.about-icon {
+font-size: 2.5rem;
+margin-bottom: 1rem;
+}
+
+.about-number {
+font-family: ‘Black Ops One’, cursive;
+font-size: 2.8rem;
+color: var(–gold);
+line-height: 1;
+}
+
+.about-label {
+font-size: 0.85rem;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: rgba(232, 223, 192, 0.6);
+margin-top: 0.3rem;
+}
+
+/* MENU */
+.menu { background: var(–bg); }
+
+.menu-tabs {
+display: flex;
+justify-content: center;
+gap: 0;
+margin-bottom: 3rem;
+flex-wrap: wrap;
+border: 1px solid rgba(200, 168, 75, 0.2);
+border-radius: 2px;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+overflow: hidden;
+}
+
+.menu-tab {
+flex: 1;
+padding: 0.9rem 1.5rem;
+background: transparent;
+border: none;
+color: rgba(232, 223, 192, 0.5);
+cursor: pointer;
+font-family: ‘Cairo’, sans-serif;
+font-weight: 700;
+font-size: 0.9rem;
+letter-spacing: 2px;
+transition: all 0.3s;
+position: relative;
+min-width: 100px;
+}
+
+.menu-tab.active {
+background: var(–gold);
+color: var(–dark-green);
+}
+
+.menu-tab:hover:not(.active) {
+background: rgba(200, 168, 75, 0.1);
+color: var(–gold);
+}
+
+.menu-panel { display: none; }
+.menu-panel.active { display: block; }
+
+.menu-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 1.5rem;
+max-width: 1100px;
+margin: 0 auto;
+}
+
+.menu-item {
+background: linear-gradient(135deg, rgba(45,59,30,0.5) 0%, rgba(26,36,16,0.8) 100%);
+border: 1px solid rgba(200, 168, 75, 0.15);
+padding: 1.8rem;
+position: relative;
+transition: all 0.3s;
+overflow: hidden;
+}
+
+.menu-item::after {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(200, 168, 75, 0.05) 0%, transparent 100%);
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.menu-item:hover {
+border-color: rgba(200, 168, 75, 0.4);
+transform: translateY(-4px);
+box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.menu-item:hover::after { opacity: 1; }
+
+.menu-item-header {
+display: flex;
+align-items: center;
+gap: 0.8rem;
+margin-bottom: 1rem;
+}
+
+.menu-item-icon {
+width: 40px;
+height: 40px;
+background: rgba(200, 168, 75, 0.1);
+border: 1px solid rgba(200, 168, 75, 0.3);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.2rem;
+flex-shrink: 0;
+}
+
+.menu-item-name {
+font-family: ‘Oswald’, sans-serif;
+font-size: 1.1rem;
+font-weight: 700;
+color: var(–gold);
+letter-spacing: 1px;
+text-transform: uppercase;
+}
+
+.menu-item-desc {
+font-size: 0.82rem;
+color: rgba(232, 223, 192, 0.55);
+line-height: 1.6;
+margin-bottom: 1.2rem;
+font-weight: 300;
+}
+
+.menu-prices {
+display: flex;
+flex-direction: column;
+gap: 0.3rem;
+border-top: 1px solid rgba(200, 168, 75, 0.15);
+padding-top: 1rem;
+}
+
+.price-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 0.82rem;
+}
+
+.price-size {
+color: rgba(232, 223, 192, 0.6);
+font-weight: 300;
+}
+
+.price-val {
+color: var(–gold);
+font-family: ‘Oswald’, sans-serif;
+font-weight: 600;
+font-size: 0.9rem;
+}
+
+/* Single price item */
+.menu-item-price {
+font-family: ‘Black Ops One’, cursive;
+font-size: 1.5rem;
+color: var(–gold);
+}
+
+/* MENU IMAGES PER SECTION */
+.menu-section-img {
+width: 100%;
+height: 160px;
+object-fit: cover;
+border-radius: 2px;
+margin-bottom: 1rem;
+display: block;
+background: rgba(45,59,30,0.5);
+overflow: hidden;
+}
+
+.burger-img-placeholder {
+width: 100%;
+height: 140px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 4rem;
+background: linear-gradient(135deg, rgba(45,59,30,0.8) 0%, rgba(26,36,16,0.9) 100%);
+margin-bottom: 1rem;
+border-radius: 2px;
+border: 1px solid rgba(200,168,75,0.1);
+}
+
+/* LOCATIONS */
+.locations {
+background: linear-gradient(180deg, var(–bg) 0%, var(–dark-green) 100%);
+position: relative;
+}
+
+.locations-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 1.5rem;
+max-width: 1100px;
+margin: 0 auto;
+}
+
+.location-card {
+background: rgba(200, 168, 75, 0.04);
+border: 1px solid rgba(200, 168, 75, 0.15);
+padding: 2rem;
+text-align: center;
+transition: all 0.3s;
 position: relative;
 overflow: hidden;
 }
 
-/* camo texture overlay */
-.hero::before {
-content:’’;
-position:absolute; inset:0;
-background-image:
-repeating-linear-gradient(45deg, rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 2px, transparent 2px, transparent 20px),
-repeating-linear-gradient(-45deg, rgba(255,255,255,.01) 0px, rgba(255,255,255,.01) 1px, transparent 1px, transparent 15px);
-pointer-events:none;
-}
-
-.hero-badge {
-display: inline-block;
-border: 1px solid var(–gold);
-color: var(–gold-light);
-font-family: ‘Oswald’, sans-serif;
-font-size: .75rem;
-letter-spacing: 4px;
-padding: 6px 20px;
-margin-bottom: 28px;
-text-transform: uppercase;
-animation: fadeDown .8s ease both;
-}
-
-.hero h1 {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(4rem, 16vw, 9rem);
-line-height: .95;
-color: var(–white);
-text-shadow: 0 4px 40px rgba(201,168,76,.4), 0 0 80px rgba(74,124,74,.3);
-letter-spacing: 4px;
-animation: fadeDown .8s .15s ease both;
-}
-
-.hero-tagline {
-font-family: ‘Oswald’, sans-serif;
-font-size: 1rem;
-letter-spacing: 6px;
-color: var(–gold);
-margin: 16px 0 8px;
-text-transform: uppercase;
-animation: fadeDown .8s .25s ease both;
-}
-
-.hero-sub {
-font-size: 1rem;
-color: rgba(245,240,232,.7);
-margin-bottom: 8px;
-animation: fadeDown .8s .3s ease both;
-}
-.hero-sub-ar {
-font-size: 1.05rem;
-color: rgba(245,240,232,.85);
-margin-bottom: 36px;
-animation: fadeDown .8s .35s ease both;
-}
-
-.hero-btns {
-display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 320px;
-animation: fadeDown .8s .45s ease both;
-}
-
-.btn-primary {
-background: var(–wa-green);
-color: #fff;
-font-family: ‘Cairo’, sans-serif;
-font-size: 1.1rem;
-font-weight: 700;
-padding: 16px 24px;
-border: none; border-radius: 4px;
-cursor: pointer;
-text-decoration: none;
-display: flex; align-items: center; justify-content: center; gap: 10px;
-letter-spacing: 1px;
-box-shadow: 0 4px 20px rgba(37,211,102,.4);
-transition: transform .2s, box-shadow .2s;
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,.55); }
-
-.btn-secondary {
-background: transparent;
-color: var(–gold-light);
-font-family: ‘Cairo’, sans-serif;
-font-size: 1rem;
-font-weight: 600;
-padding: 14px 24px;
-border: 2px solid var(–gold);
-border-radius: 4px;
-cursor: pointer;
-text-decoration: none;
-display: flex; align-items: center; justify-content: center; gap: 10px;
-transition: background .2s, color .2s;
-}
-.btn-secondary:hover { background: var(–gold); color: var(–army-dark); }
-
-.btn-ig {
-background: transparent;
-color: var(–cream);
-font-family: ‘Oswald’, sans-serif;
-font-size: .85rem;
-letter-spacing: 3px;
-text-decoration: none;
-display: flex; align-items: center; justify-content: center; gap: 8px;
-padding: 8px 0;
-opacity: .75;
-transition: opacity .2s;
-}
-.btn-ig:hover { opacity: 1; }
-
-/* ── STATS BAR ── */
-.stats {
-background: var(–army-green);
-border-top: 2px solid var(–gold);
-border-bottom: 2px solid var(–gold);
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-text-align: center;
-padding: 20px 0;
-}
-.stat-item { padding: 12px 8px; border-left: 1px solid rgba(201,168,76,.3); }
-.stat-item:last-child { border-right: 1px solid rgba(201,168,76,.3); }
-.stat-num {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 2rem;
-color: var(–gold-light);
-display: block;
-}
-.stat-lbl {
-font-size: .72rem;
-color: rgba(245,240,232,.65);
-display: block;
-margin-top: 2px;
-}
-
-/* ── SECTION WRAPPER ── */
-section { padding: 64px 24px; max-width: 900px; margin: 0 auto; }
-
-.section-header {
-text-align: center;
-margin-bottom: 48px;
-}
-.section-badge {
-font-family: ‘Oswald’, sans-serif;
-font-size: .75rem;
-letter-spacing: 5px;
-color: var(–gold);
-text-transform: uppercase;
-display: block;
-margin-bottom: 10px;
-}
-.section-title {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(2.2rem, 6vw, 3.5rem);
-color: var(–white);
-letter-spacing: 3px;
-line-height: 1;
-}
-.section-line {
-width: 60px; height: 3px;
+.location-card::before {
+content: ‘’;
+position: absolute;
+bottom: 0; left: 0; right: 0;
+height: 2px;
 background: var(–gold);
-margin: 16px auto 0;
+transform: scaleX(0);
+transition: transform 0.4s;
 }
 
-/* ── MENU ── */
-.menu-section { background: var(–army-dark); }
+.location-card:hover::before { transform: scaleX(1); }
 
-.menu-category {
-margin-bottom: 56px;
-}
-.cat-header {
-display: flex; align-items: center; gap: 16px;
-margin-bottom: 28px;
-}
-.cat-icon { font-size: 1.8rem; }
-.cat-title {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 2rem;
-color: var(–gold-light);
-letter-spacing: 3px;
-}
-.cat-title-ar {
-font-size: .85rem;
-color: rgba(245,240,232,.55);
-margin-top: 2px;
-}
-.cat-line { flex:1; height:1px; background: linear-gradient(to left, transparent, var(–gold)); }
-
-.items-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-gap: 16px;
+.location-card:hover {
+background: rgba(200, 168, 75, 0.08);
+transform: translateY(-5px);
+box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
-.menu-card {
-background: var(–army-green);
-border: 1px solid rgba(201,168,76,.25);
-border-radius: 6px;
-padding: 20px;
-position: relative;
-transition: border-color .2s, transform .2s;
-}
-.menu-card:hover { border-color: var(–gold); transform: translateY(-3px); }
-
-.menu-card-name {
-font-family: ‘Oswald’, sans-serif;
-font-size: 1.1rem;
-color: var(–white);
-letter-spacing: 1px;
-margin-bottom: 10px;
-}
-.menu-card-prices {
-display: flex; flex-direction: column; gap: 4px;
-}
-.price-row {
-display: flex; justify-content: space-between; align-items: center;
-font-size: .82rem;
-color: rgba(245,240,232,.7);
-padding: 2px 0;
-border-bottom: 1px solid rgba(255,255,255,.06);
-}
-.price-row:last-child { border-bottom: none; }
-.price-val {
-color: var(–gold-light);
-font-weight: 700;
-font-family: ‘Oswald’, sans-serif;
-font-size: .9rem;
-}
-.price-row.highlight {
-background: rgba(201,168,76,.12);
-padding: 5px 8px;
-border-radius: 3px;
-margin: 4px -4px;
-border-bottom: none;
-}
-.price-row.highlight .price-val { color: var(–gold); font-size: 1rem; }
-
-/* appetizer grid */
-.app-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-gap: 12px;
-}
-.app-card {
-background: var(–army-green);
-border: 1px solid rgba(201,168,76,.2);
-border-radius: 6px;
-padding: 16px;
-display: flex; justify-content: space-between; align-items: center;
-transition: border-color .2s;
-}
-.app-card:hover { border-color: var(–gold); }
-.app-name { font-size: .9rem; color: var(–cream); }
-.app-price { font-family: ‘Oswald’, sans-serif; color: var(–gold-light); font-size: 1rem; font-weight: 600; }
-
-/* fries & drinks */
-.fd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-.fd-card {
-background: var(–army-green);
-border: 1px solid rgba(201,168,76,.2);
-border-radius: 6px;
-padding: 16px;
-text-align: center;
-transition: border-color .2s;
-}
-.fd-card:hover { border-color: var(–gold); }
-.fd-card-name { font-family: ‘Oswald’, sans-serif; color: var(–white); font-size: .95rem; margin-bottom: 6px; }
-.fd-card-price { color: var(–gold-light); font-weight: 700; font-size: 1.1rem; }
-.fd-card-sub { font-size: .78rem; color: rgba(245,240,232,.55); margin-top: 4px; }
-
-.fight-fries {
-background: linear-gradient(135deg, #1e3a1e, #2d5a2d);
-border: 2px solid var(–gold);
-border-radius: 6px;
-padding: 20px;
-text-align: center;
-margin-top: 12px;
-}
-.fight-fries .fd-card-name { font-size: 1.2rem; color: var(–gold-light); }
-.fight-fries .fd-card-price { font-size: 1.4rem; }
-.fight-fries .fd-card-sub { color: rgba(245,240,232,.7); }
-
-/* ── SPECIAL ITEMS ── */
-.special-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-.special-card {
-background: linear-gradient(135deg, var(–army-green), #1a3a1a);
-border: 2px solid var(–gold);
-border-radius: 6px;
-padding: 24px;
-text-align: center;
-}
-.special-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.5rem; color: var(–gold-light); margin-bottom: 8px; letter-spacing: 2px; }
-.special-desc { font-size: .85rem; color: rgba(245,240,232,.65); margin-bottom: 12px; }
-.special-prices { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.special-p { background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.4); border-radius: 4px; padding: 6px 14px; font-family: ‘Oswald’, sans-serif; }
-.special-p-lbl { font-size: .7rem; color: rgba(245,240,232,.5); display:block; }
-.special-p-val { font-size: 1rem; color: var(–gold-light); font-weight: 700; }
-
-/* ── LOCATIONS ── */
-.locations-section {
-background: linear-gradient(180deg, var(–army-dark) 0%, var(–army-green) 100%);
-padding: 64px 24px;
-}
-.loc-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-gap: 16px;
-max-width: 900px;
-margin: 0 auto;
-}
-.loc-card {
-background: rgba(13,26,14,.7);
-border: 1px solid rgba(201,168,76,.3);
-border-radius: 6px;
-padding: 24px;
-text-align: center;
-transition: border-color .2s, transform .2s;
-text-decoration: none;
-}
-.loc-card:hover { border-color: var(–gold); transform: translateY(-3px); }
-.loc-num {
-font-family: ‘Bebas Neue’, sans-serif;
+.location-number {
+font-family: ‘Black Ops One’, cursive;
 font-size: 3rem;
-color: rgba(201,168,76,.25);
+color: rgba(200, 168, 75, 0.1);
 line-height: 1;
+position: absolute;
+top: 1rem;
+right: 1.5rem;
 }
-.loc-name {
+
+.location-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+.location-name {
 font-family: ‘Oswald’, sans-serif;
-font-size: 1.1rem;
-color: var(–gold-light);
+font-size: 1.2rem;
+font-weight: 700;
+color: var(–gold);
 letter-spacing: 2px;
-margin: 8px 0 4px;
+text-transform: uppercase;
+margin-bottom: 0.5rem;
 }
-.loc-name-ar {
+
+.location-arabic {
 font-size: 1rem;
 color: var(–cream);
-margin-bottom: 16px;
+margin-bottom: 0.3rem;
+font-weight: 600;
 }
-.loc-btn {
-display: inline-flex; align-items: center; gap: 6px;
-background: var(–gold);
-color: var(–army-dark);
-font-family: ‘Cairo’, sans-serif;
-font-size: .82rem;
-font-weight: 700;
-padding: 8px 18px;
-border-radius: 3px;
-text-decoration: none;
-transition: background .2s;
-}
-.loc-btn:hover { background: var(–gold-light); }
 
-/* ── HOURS ── */
-.hours-box {
-background: var(–army-green);
-border: 2px solid var(–gold);
-border-radius: 8px;
-padding: 32px;
+.location-sub {
+font-size: 0.8rem;
+color: rgba(232, 223, 192, 0.5);
+line-height: 1.5;
+}
+
+/* HOURS */
+.hours-bar {
+max-width: 500px;
+margin: 0 auto 4rem;
+background: rgba(200, 168, 75, 0.05);
+border: 1px solid rgba(200, 168, 75, 0.2);
+padding: 1.5rem 2rem;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 1.5rem;
+}
+
+.hours-icon { font-size: 2rem; }
+
+.hours-text {
+font-family: ‘Black Ops One’, cursive;
+font-size: 1.8rem;
+color: var(–gold);
+letter-spacing: 3px;
+}
+
+.hours-label {
+font-size: 0.75rem;
+letter-spacing: 3px;
+color: rgba(232, 223, 192, 0.5);
+text-transform: uppercase;
+display: block;
+margin-bottom: 0.2rem;
+}
+
+/* CTA SECTION */
+.cta-section {
+background: linear-gradient(135deg, var(–dark-green) 0%, rgba(200, 168, 75, 0.08) 50%, var(–dark-green) 100%);
+border-top: 1px solid rgba(200, 168, 75, 0.2);
+border-bottom: 1px solid rgba(200, 168, 75, 0.2);
 text-align: center;
-max-width: 480px;
-margin: 0 auto;
-}
-.hours-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
-.hours-title { font-family: ‘Oswald’, sans-serif; font-size: .8rem; letter-spacing: 5px; color: var(–gold); text-transform: uppercase; margin-bottom: 12px; }
-.hours-time { font-family: ‘Bebas Neue’, sans-serif; font-size: 3rem; color: var(–white); letter-spacing: 4px; }
-.hours-sub { font-size: .85rem; color: rgba(245,240,232,.6); margin-top: 8px; }
-
-/* ── REVIEWS ── */
-.reviews-section { background: var(–army-dark); padding: 64px 24px; }
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; max-width: 900px; margin: 0 auto; }
-.review-card {
-background: var(–army-green);
-border: 1px solid rgba(201,168,76,.2);
-border-radius: 6px;
-padding: 24px;
-position: relative;
-}
-.review-stars { color: var(–gold); font-size: 1.1rem; margin-bottom: 12px; }
-.review-text { font-size: .9rem; color: rgba(245,240,232,.85); line-height: 1.7; margin-bottom: 16px; font-style: italic; }
-.review-author { font-family: ‘Oswald’, sans-serif; font-size: .8rem; letter-spacing: 2px; color: var(–gold); text-transform: uppercase; }
-.review-quote {
-position: absolute; top: 16px; left: 20px;
-font-size: 4rem;
-color: rgba(201,168,76,.1);
-font-family: Georgia, serif;
-line-height: 1;
+padding: 5rem 5%;
 }
 
-/* ── CTA FOOTER STRIP ── */
-.cta-strip {
-background: var(–army-green);
-border-top: 3px solid var(–gold);
-border-bottom: 3px solid var(–gold);
-padding: 48px 24px;
-text-align: center;
+.cta-title {
+font-family: ‘Black Ops One’, cursive;
+font-size: clamp(2rem, 5vw, 3.5rem);
+color: var(–cream);
+letter-spacing: 3px;
+margin-bottom: 1rem;
 }
-.cta-strip h2 { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.5rem; color: var(–white); letter-spacing: 3px; margin-bottom: 8px; }
-.cta-strip p { color: rgba(245,240,232,.65); margin-bottom: 28px; font-size: .95rem; }
-.cta-btns { display: flex; flex-direction: column; gap: 14px; align-items: center; }
-.cta-btns .btn-primary, .cta-btns .btn-secondary { width: 100%; max-width: 320px; }
 
-/* ── FOOTER ── */
+.cta-subtitle {
+font-size: 1rem;
+color: rgba(232, 223, 192, 0.6);
+margin-bottom: 2.5rem;
+max-width: 500px;
+margin-left: auto;
+margin-right: auto;
+line-height: 1.7;
+}
+
+.cta-buttons {
+display: flex;
+gap: 1rem;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+/* FOOTER */
 footer {
-background: var(–army-dark);
-border-top: 1px solid rgba(201,168,76,.2);
-padding: 32px 24px;
-text-align: center;
+background: var(–dark-green);
+border-top: 1px solid rgba(200, 168, 75, 0.15);
+padding: 3rem 5%;
 }
-.footer-logo { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.6rem; color: var(–gold); letter-spacing: 4px; margin-bottom: 8px; }
-.footer-phone { color: var(–gold-light); font-family: ‘Oswald’, sans-serif; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 16px; }
-.footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 20px; }
-.footer-links a { color: rgba(245,240,232,.5); text-decoration: none; font-size: .85rem; transition: color .2s; }
+
+.footer-inner {
+max-width: 1100px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 2rem;
+}
+
+.footer-logo {
+font-family: ‘Black Ops One’, cursive;
+font-size: 1.8rem;
+color: var(–gold);
+letter-spacing: 3px;
+}
+
+.footer-tagline {
+font-size: 0.75rem;
+letter-spacing: 3px;
+color: rgba(232, 223, 192, 0.4);
+text-transform: uppercase;
+margin-top: 0.3rem;
+}
+
+.footer-links {
+display: flex;
+gap: 2rem;
+list-style: none;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.footer-links a {
+color: rgba(232, 223, 192, 0.5);
+text-decoration: none;
+font-size: 0.85rem;
+transition: color 0.3s;
+letter-spacing: 1px;
+}
+
 .footer-links a:hover { color: var(–gold); }
-.footer-copy { font-size: .75rem; color: rgba(245,240,232,.3); }
 
-/* ── DIVIDER ── */
-.divider {
-width: 100%; height: 2px;
-background: linear-gradient(to right, transparent, var(–gold), transparent);
-margin: 0;
+.footer-social {
+display: flex;
+gap: 1rem;
+align-items: center;
 }
 
-/* ── ANIMATIONS ── */
-@keyframes fadeDown {
-from { opacity:0; transform: translateY(-18px); }
-to   { opacity:1; transform: translateY(0); }
+.social-btn {
+width: 40px;
+height: 40px;
+background: rgba(200, 168, 75, 0.08);
+border: 1px solid rgba(200, 168, 75, 0.2);
+display: flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+font-size: 1.1rem;
+transition: all 0.3s;
+color: var(–gold);
 }
 
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(–army-dark); }
-::-webkit-scrollbar-thumb { background: var(–gold); border-radius: 3px; }
+.social-btn:hover {
+background: var(–gold);
+color: var(–dark-green);
+}
+
+.footer-bottom {
+border-top: 1px solid rgba(200, 168, 75, 0.1);
+padding-top: 1.5rem;
+margin-top: 2rem;
+text-align: center;
+font-size: 0.75rem;
+color: rgba(232, 223, 192, 0.3);
+letter-spacing: 1px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeInDown {
+from { opacity: 0; transform: translateY(-20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* BARBED WIRE DIVIDER */
+.barbed-divider {
+text-align: center;
+color: rgba(200, 168, 75, 0.2);
+font-size: 0.8rem;
+letter-spacing: 4px;
+padding: 1rem 0;
+overflow: hidden;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* MOBILE NAV TOGGLE */
+.nav-toggle {
+display: none;
+flex-direction: column;
+gap: 5px;
+cursor: pointer;
+padding: 5px;
+}
+
+.nav-toggle span {
+display: block;
+width: 24px;
+height: 2px;
+background: var(–gold);
+}
+
+@media (max-width: 768px) {
+.nav-links { display: none; }
+.nav-toggle { display: flex; }
+.about-grid { grid-template-columns: 1fr; }
+.menu-tabs { flex-direction: column; max-width: 300px; }
+.menu-tab { padding: 0.7rem; }
+.footer-inner { flex-direction: column; text-align: center; }
+}
+
+/* STAR RANK */
+.stars {
+color: var(–gold);
+font-size: 0.7rem;
+margin-bottom: 0.5rem;
+}
+
+/* SPECIAL TAG */
+.special-tag {
+display: inline-block;
+background: var(–gold);
+color: var(–dark-green);
+font-size: 0.65rem;
+font-weight: 900;
+letter-spacing: 2px;
+padding: 0.15rem 0.5rem;
+text-transform: uppercase;
+margin-bottom: 0.5rem;
+}
+
+/* SCROLL TO TOP */
+.scroll-top {
+position: fixed;
+bottom: 2rem;
+left: 2rem;
+width: 44px;
+height: 44px;
+background: var(–gold);
+color: var(–dark-green);
+border: none;
+cursor: pointer;
+font-size: 1.2rem;
+display: none;
+align-items: center;
+justify-content: center;
+z-index: 500;
+transition: all 0.3s;
+clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.scroll-top.visible { display: flex; }
+.scroll-top:hover { background: var(–gold-light); transform: translateY(-3px); }
 </style>
 
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 
 <nav>
-  <div class="nav-logo">ARMY <span>BURGER</span></div>
-  <div class="nav-stars">★ ★ ★</div>
+  <a href="#" class="nav-logo">⭐ ARMY BURGER</a>
+  <ul class="nav-links">
+    <li><a href="#menu">المنيو</a></li>
+    <li><a href="#locations">الفروع</a></li>
+    <li><a href="#hours">أوقات العمل</a></li>
+    <li><a href="#contact">تواصل معنا</a></li>
+  </ul>
+  <a href="https://wa.me/96279070706" target="_blank" class="nav-cta">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    اطلب الآن
+  </a>
 </nav>
 
 <!-- HERO -->
 
-<section class="hero" style="max-width:100%; padding-top:110px;">
-  <div class="hero-badge">★ STURDY BURGERS · AMMAN JORDAN ★</div>
-  <h1>ARMY<br>BURGER</h1>
-  <div class="hero-tagline">⭐ FUEL YOUR HUNGER ⭐</div>
-  <p class="hero-sub">Where Every Bite is a Battle Won</p>
-  <p class="hero-sub-ar">أفضل برغر في عمّان — معركة النكهة لصالحك دائماً 🍔🏆</p>
-  <div class="hero-btns">
-    <a href="https://wa.me/96279700706" target="_blank" class="btn-primary">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      اطلب عبر واتساب
-    </a>
-    <a href="#menu" class="btn-secondary">
-      🍔 شاهد القائدة العسكرية (المنيو)
-    </a>
-    <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="btn-ig">
-      📸 @armyburgerjo على إنستقرام
-    </a>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stars" id="stars"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⭐ STURDY BURGERS ⭐ عمّان، الأردن</div>
+    <h1 class="hero-title">ARMY<br>BURGER</h1>
+    <p class="hero-subtitle">STURDY BURGERS</p>
+    <p class="hero-tagline">Fuel Your Hunger · Where Every Bite is a Battle Won 🏆🍔</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn-primary">🍔 شوف المنيو</a>
+      <a href="https://wa.me/96279070706" target="_blank" class="btn-whatsapp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        اطلب واتساب
+      </a>
+      <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="btn-outline">📸 انستاغرام</a>
+    </div>
+  </div>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- ABOUT -->
+
+<section class="about">
+  <div class="about-grid reveal">
+    <div class="about-card">
+      <div class="about-icon">🍔</div>
+      <div class="about-number">717+</div>
+      <div class="about-label">منشور · Posts</div>
+    </div>
+    <div class="about-card">
+      <div class="about-icon">⭐</div>
+      <div class="about-number">86.6K</div>
+      <div class="about-label">متابع · Followers</div>
+    </div>
+    <div class="about-card">
+      <div class="about-icon">📍</div>
+      <div class="about-number">5</div>
+      <div class="about-label">فروع · Branches</div>
+    </div>
   </div>
 </section>
 
-<!-- STATS -->
+<!-- HOURS BAR -->
 
-<div class="stats">
-  <div class="stat-item">
-    <span class="stat-num">86K+</span>
-    <span class="stat-lbl">متابع انستقرام</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">5</span>
-    <span class="stat-lbl">فروع في عمّان</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">11AM</span>
-    <span class="stat-lbl">يفتح حتى 1 صباحاً</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">4.9 ⭐</span>
-    <span class="stat-lbl">تقييم العملاء</span>
+<div style="background:var(--dark-green);padding:2rem 5%;border-top:1px solid rgba(200,168,75,0.1);border-bottom:1px solid rgba(200,168,75,0.1);" id="hours">
+  <div class="hours-bar reveal">
+    <div class="hours-icon">⏰</div>
+    <div>
+      <span class="hours-label">أوقات الخدمة · Service Hours</span>
+      <div class="hours-text">11:00 AM – 1:00 AM</div>
+    </div>
   </div>
 </div>
-
-<div class="divider"></div>
 
 <!-- MENU -->
 
-<div id="menu" style="background: var(--army-dark); padding: 64px 0 0;">
-  <div style="max-width:900px; margin:0 auto; padding: 0 24px;">
-    <div class="section-header">
-      <span class="section-badge">★ BATTLEFIELD MENU ★</span>
-      <h2 class="section-title">القيادة العسكرية</h2>
-      <p style="color:rgba(245,240,232,.55); margin-top:10px; font-size:.9rem;">اختر سلاحك — كل وجبة معركة مكسوبة</p>
-      <div class="section-line"></div>
-    </div>
+<section class="menu" id="menu">
+  <div class="section-header reveal">
+    <span class="section-label">Mission: Eat</span>
+    <h2 class="section-title">القائمة · <span>MENU</span></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="menu-tabs reveal">
+    <button class="menu-tab active" onclick="showTab('beef')">🥩 لحم</button>
+    <button class="menu-tab" onclick="showTab('chicken')">🍗 دجاج</button>
+    <button class="menu-tab" onclick="showTab('appetizers')">🍟 مقبلات</button>
+    <button class="menu-tab" onclick="showTab('fries')">🍟 بطاطا</button>
+    <button class="menu-tab" onclick="showTab('drinks')">🥤 مشروبات</button>
+  </div>
+
+  <!-- BEEF -->
+
+  <div class="menu-panel active" id="tab-beef">
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <div class="burger-img-placeholder">🍔</div>
+        <div class="stars">★★★</div>
+        <div class="menu-item-header">
+          <div class="menu-item-icon">🎖️</div>
+          <div class="menu-item-name">Army Burger</div>
+        </div>
+        <div class="menu-prices">
+          <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+          <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+          <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+          <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+          <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+          <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+        </div>
+      </div>
 
 ```
-<!-- BEEF BURGER -->
-<div class="menu-category">
-  <div class="cat-header">
-    <span class="cat-icon">🍔</span>
-    <div>
-      <div class="cat-title">BEEF BURGER</div>
-      <div class="cat-title-ar">برغر لحم بقري طازج — مطبوخ بدقة عسكرية</div>
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🍔</div>
+    <div class="stars">★★★</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🪖</div>
+      <div class="menu-item-name">Last Soldier</div>
     </div>
-    <div class="cat-line"></div>
-  </div>
-  <div class="items-grid">
-    <!-- Army Burger -->
-    <div class="menu-card">
-      <div class="menu-card-name">★ ARMY BURGER</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <!-- Last Soldier -->
-    <div class="menu-card">
-      <div class="menu-card-name">★ LAST SOLDIER</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <!-- Snow Army -->
-    <div class="menu-card">
-      <div class="menu-card-name">★ SNOW ARMY</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <!-- Fire Army -->
-    <div class="menu-card">
-      <div class="menu-card-name">🔥 FIRE ARMY</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <!-- Flavour War -->
-    <div class="menu-card">
-      <div class="menu-card-name">💥 FLAVOUR WAR</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <!-- Marines Burger -->
-    <div class="menu-card">
-      <div class="menu-card-name">⚓ MARINES BURGER</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <!-- Avocados Explosion -->
-    <div class="menu-card">
-      <div class="menu-card-name">🥑 AVOCADOS EXPLOSION</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <!-- Big Man -->
-    <div class="menu-card">
-      <div class="menu-card-name">💪 BIG MAN</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>BIG MAN Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>Big Man Sandwich</span><span class="price-val">4.00 JD</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CHICKEN BURGER -->
-<div class="menu-category">
-  <div class="cat-header">
-    <span class="cat-icon">🍗</span>
-    <div>
-      <div class="cat-title">CHICKEN BURGER</div>
-      <div class="cat-title-ar">برغر دجاج — مقرمش ولذيذ</div>
-    </div>
-    <div class="cat-line"></div>
-  </div>
-  <div class="items-grid">
-    <div class="menu-card">
-      <div class="menu-card-name">🥇 CRISPY CHICKEN</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <div class="menu-card">
-      <div class="menu-card-name">🌶️ SPICY CRISPY CHICKEN</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <div class="menu-card">
-      <div class="menu-card-name">🔥 GRILL CHICKEN</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
-    </div>
-    <div class="menu-card">
-      <div class="menu-card-name">⚡ S.W.A.T</div>
-      <div class="menu-card-prices">
-        <div class="price-row highlight"><span>200g Meal</span><span class="price-val">6.00 JD</span></div>
-        <div class="price-row"><span>150g Meal</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>100g Meal</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>200g Sandwich</span><span class="price-val">5.00 JD</span></div>
-        <div class="price-row"><span>150g Sandwich</span><span class="price-val">4.00 JD</span></div>
-        <div class="price-row"><span>100g Sandwich</span><span class="price-val">3.00 JD</span></div>
-      </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
     </div>
   </div>
 
-  <!-- Special Items -->
-  <div style="margin-top:20px;">
-    <div class="special-grid">
-      <div class="special-card">
-        <div class="special-title">🍔 MINI BURGER</div>
-        <div class="special-desc">أي قطعة من اختيار + بصلة</div>
-        <div class="special-prices">
-          <div class="special-p">
-            <span class="special-p-lbl">4 قطع</span>
-            <span class="special-p-val">6.00 JD</span>
-          </div>
-          <div class="special-p">
-            <span class="special-p-lbl">8 قطع</span>
-            <span class="special-p-val">10.00 JD</span>
-          </div>
-        </div>
-      </div>
-      <div class="special-card">
-        <div class="special-title">👶 KIDS MEAL</div>
-        <div class="special-desc">وجبة مخصصة للأطفال</div>
-        <div class="special-prices">
-          <div class="special-p">
-            <span class="special-p-lbl">الوجبة</span>
-            <span class="special-p-val">2.75 JD</span>
-          </div>
-        </div>
-      </div>
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">❄️🍔</div>
+    <div class="stars">★★★</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">❄️</div>
+      <div class="menu-item-name">Snow Army</div>
+    </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
     </div>
   </div>
-</div>
 
-<!-- APPETIZERS -->
-<div class="menu-category">
-  <div class="cat-header">
-    <span class="cat-icon">💥</span>
-    <div>
-      <div class="cat-title">APPETIZER</div>
-      <div class="cat-title-ar">المقبلات</div>
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🔥🍔</div>
+    <div class="stars">★★★</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🔥</div>
+      <div class="menu-item-name">Fire Army</div>
     </div>
-    <div class="cat-line"></div>
-  </div>
-  <div class="app-grid">
-    <div class="app-card"><span class="app-name">Boneless (6 pcs)</span><span class="app-price">3.85 JD</span></div>
-    <div class="app-card"><span class="app-name">Wings (10 pcs)</span><span class="app-price">3.85 JD</span></div>
-    <div class="app-card"><span class="app-name">Tenders (4 pcs)</span><span class="app-price">4.90 JD</span></div>
-    <div class="app-card"><span class="app-name">Mozzarella Sticks (5 pcs)</span><span class="app-price">2.80 JD</span></div>
-    <div class="app-card"><span class="app-name">Jalapeño Bites (5 pcs)</span><span class="app-price">2.80 JD</span></div>
-    <div class="app-card"><span class="app-name">Onion Rings (5 pcs)</span><span class="app-price">2.80 JD</span></div>
-    <div class="app-card"><span class="app-name">Hashbrown (4 pcs)</span><span class="app-price">2.75 JD</span></div>
-  </div>
-  <!-- Molotov Box & Salad -->
-  <div style="margin-top: 16px; display:grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap:14px;">
-    <div class="menu-card" style="border-color: rgba(192,57,43,.5);">
-      <div class="menu-card-name" style="color: #e74c3c;">💣 MOLOTOV BOX</div>
-      <div style="font-size:.8rem; color:rgba(245,240,232,.6); margin-bottom:8px;">موزاريلا ستيكس، هاشبرون، بيبس، بطاطا كيرلي، بصلة حلقات ودجاج</div>
-      <div class="price-row highlight"><span>Box</span><span class="price-val">6.50 JD</span></div>
-    </div>
-    <div class="menu-card">
-      <div class="menu-card-name" style="color: #27ae60;">🥗 WAR CRIMINAL SALAD</div>
-      <div class="menu-card-prices">
-        <div class="price-row"><span>سلطة</span><span class="price-val">3.75 JD</span></div>
-        <div class="price-row highlight"><span>مع دجاج</span><span class="price-val">4.75 JD</span></div>
-      </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
     </div>
   </div>
-</div>
 
-<!-- FRIES -->
-<div class="menu-category">
-  <div class="cat-header">
-    <span class="cat-icon">🍟</span>
-    <div>
-      <div class="cat-title">FRIES</div>
-      <div class="cat-title-ar">البطاطا</div>
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">💥🍔</div>
+    <div class="stars">★★★</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">💥</div>
+      <div class="menu-item-name">Flavour War</div>
     </div>
-    <div class="cat-line"></div>
-  </div>
-  <div class="fd-grid">
-    <div class="fd-card">
-      <div class="fd-card-name">French Fries</div>
-      <div class="fd-card-price">1.00 JD</div>
-    </div>
-    <div class="fd-card">
-      <div class="fd-card-name">Curly Fries</div>
-      <div class="fd-card-price">1.50 JD</div>
-    </div>
-    <div class="fd-card">
-      <div class="fd-card-name">Wedge Fries</div>
-      <div class="fd-card-price">1.50 JD</div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
     </div>
   </div>
-  <div class="fight-fries">
-    <div class="fd-card-name">💥 FIGHT FRIES</div>
-    <div class="fd-card-price">2.95 JD</div>
-    <div class="fd-card-sub">بطاطا مقلية مع جبنة سائلة وصوص خاص، بصل أخضر، بيف بيكن</div>
-  </div>
-</div>
 
-<!-- DRINKS -->
-<div class="menu-category">
-  <div class="cat-header">
-    <span class="cat-icon">🥤</span>
-    <div>
-      <div class="cat-title">DRINK</div>
-      <div class="cat-title-ar">المشروبات</div>
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">⚓🍔</div>
+    <div class="stars">★★★</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">⚓</div>
+      <div class="menu-item-name">Marines Burger</div>
     </div>
-    <div class="cat-line"></div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+    </div>
   </div>
-  <div class="fd-grid">
-    <div class="fd-card">
-      <div class="fd-card-name">Soft Drink</div>
-      <div class="fd-card-price">0.50 JD</div>
-      <div class="fd-card-sub">Matrix Cola / Cola Zero<br>Matrix Up / Up Zero / Orange</div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🥑🍔</div>
+    <div class="stars">★★★</div>
+    <div class="special-tag">NEW</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🥑</div>
+      <div class="menu-item-name">Avocados Explosion</div>
     </div>
-    <div class="fd-card">
-      <div class="fd-card-name">Water</div>
-      <div class="fd-card-price">0.35 JD</div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+    </div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">💪🍔</div>
+    <div class="stars">★★★★</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">💪</div>
+      <div class="menu-item-name">Big Man</div>
+    </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">Big Man Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">Big Man Sandwich</span><span class="price-val">4.00 JD</span></div>
     </div>
   </div>
 </div>
 ```
 
-  </div><!-- end max-width wrapper -->
-</div><!-- end menu section -->
+  </div>
 
-<div class="divider"></div>
+  <!-- CHICKEN -->
+
+  <div class="menu-panel" id="tab-chicken">
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <div class="burger-img-placeholder">🍗</div>
+        <div class="stars">★★★</div>
+        <div class="menu-item-header">
+          <div class="menu-item-icon">🍗</div>
+          <div class="menu-item-name">Crispy Chicken</div>
+        </div>
+        <div class="menu-prices">
+          <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+          <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+          <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+          <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+          <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+          <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+        </div>
+      </div>
+
+```
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🌶️🍗</div>
+    <div class="stars">★★★</div>
+    <div class="special-tag">SPICY</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🌶️</div>
+      <div class="menu-item-name">Spicy Crispy Chicken</div>
+    </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+    </div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🔥🍗</div>
+    <div class="stars">★★★</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🔥</div>
+      <div class="menu-item-name">Grill Chicken</div>
+    </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+    </div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🎯🍗</div>
+    <div class="stars">★★★</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🎯</div>
+      <div class="menu-item-name">S.W.A.T</div>
+    </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">200g Meal</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Meal</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Meal</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">200g Sandwich</span><span class="price-val">5.00 JD</span></div>
+      <div class="price-row"><span class="price-size">150g Sandwich</span><span class="price-val">4.00 JD</span></div>
+      <div class="price-row"><span class="price-size">100g Sandwich</span><span class="price-val">3.00 JD</span></div>
+    </div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🍔🍔</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🍔</div>
+      <div class="menu-item-name">Mini Burger</div>
+    </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">4 قطعة + بصاطة</span><span class="price-val">6.00 JD</span></div>
+      <div class="price-row"><span class="price-size">8 قطعة</span><span class="price-val">10.00 JD</span></div>
+    </div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">👦🍔</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">👦</div>
+      <div class="menu-item-name">Kids Meal</div>
+    </div>
+    <div style="margin-top:1rem;">
+      <div class="menu-item-price">2.75 JD</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- APPETIZERS -->
+
+  <div class="menu-panel" id="tab-appetizers">
+    <div class="menu-grid">
+      <div class="menu-item reveal">
+        <div class="burger-img-placeholder">🍗</div>
+        <div class="menu-item-header">
+          <div class="menu-item-icon">🍗</div>
+          <div class="menu-item-name">Boneless (6 pcs)</div>
+        </div>
+        <div class="menu-item-desc">BBQ · Honey Mustard · Crazy · Buffalo · Sweet & Chili · Ranch · Dynamite</div>
+        <div class="menu-item-price">3.85 JD</div>
+      </div>
+
+```
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🍗</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🥩</div>
+      <div class="menu-item-name">Wings (10 pcs)</div>
+    </div>
+    <div class="menu-item-desc">BBQ · Honey Mustard · Crazy · Buffalo · Sweet & Chili · Ranch · Dynamite</div>
+    <div class="menu-item-price">3.85 JD</div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🍖</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🍖</div>
+      <div class="menu-item-name">Tenders (4 pcs)</div>
+    </div>
+    <div class="menu-item-desc">BBQ · Honey Mustard · Crazy · Buffalo · Sweet & Chili · Ranch · Dynamite</div>
+    <div class="menu-item-price">4.90 JD</div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🧀</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🧀</div>
+      <div class="menu-item-name">Mozzarella Sticks (5 pcs)</div>
+    </div>
+    <div class="menu-item-price">2.80 JD</div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🌶️</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🌶️</div>
+      <div class="menu-item-name">Jalapeno Bites (5 pcs)</div>
+    </div>
+    <div class="menu-item-price">2.80 JD</div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🧅</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🧅</div>
+      <div class="menu-item-name">Onion Rings (5 pcs)</div>
+    </div>
+    <div class="menu-item-price">2.80 JD</div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🥔</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🥔</div>
+      <div class="menu-item-name">Hashbrown (4 pcs)</div>
+    </div>
+    <div class="menu-item-price">2.75 JD</div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">💣</div>
+    <div class="special-tag">SPECIAL</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">💣</div>
+      <div class="menu-item-name">Molotov Box</div>
+    </div>
+    <div class="menu-item-desc">موزاريلا ستيكس · هاشبرون رانش · بلقيت كريمي · بطاطا ويدج · بطاطا</div>
+    <div class="menu-item-price">6.50 JD</div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🥗</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🥗</div>
+      <div class="menu-item-name">War Criminal Salad</div>
+    </div>
+    <div class="menu-prices">
+      <div class="price-row"><span class="price-size">Small</span><span class="price-val">3.75 JD</span></div>
+      <div class="price-row"><span class="price-size">Large</span><span class="price-val">4.75 JD</span></div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- FRIES -->
+
+  <div class="menu-panel" id="tab-fries">
+    <div class="menu-grid" style="max-width:800px;">
+      <div class="menu-item reveal">
+        <div class="burger-img-placeholder">🍟</div>
+        <div class="menu-item-header">
+          <div class="menu-item-icon">🍟</div>
+          <div class="menu-item-name">French Fries</div>
+        </div>
+        <div class="menu-item-price">1.00 JD</div>
+      </div>
+
+```
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🌀🍟</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🌀</div>
+      <div class="menu-item-name">Curly Fries</div>
+    </div>
+    <div class="menu-item-price">1.50 JD</div>
+  </div>
+
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">🔷🍟</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">🔷</div>
+      <div class="menu-item-name">Wedge Fries</div>
+    </div>
+    <div class="menu-item-price">1.50 JD</div>
+  </div>
+
+  <div class="menu-item reveal" style="border-color:rgba(200,168,75,0.4);">
+    <div class="burger-img-placeholder">⚔️🍟</div>
+    <div class="special-tag">MUST TRY</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">⚔️</div>
+      <div class="menu-item-name">Fight Fries</div>
+    </div>
+    <div class="menu-item-desc">بطاطا مقلية مع جبنة سائلة K مع صوص خاص بصل أخضر · بيف بيكن</div>
+    <div class="menu-item-price">2.95 JD</div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- DRINKS -->
+
+  <div class="menu-panel" id="tab-drinks">
+    <div class="menu-grid" style="max-width:600px;">
+      <div class="menu-item reveal">
+        <div class="burger-img-placeholder">🥤</div>
+        <div class="menu-item-header">
+          <div class="menu-item-icon">🥤</div>
+          <div class="menu-item-name">Soft Drink</div>
+        </div>
+        <div class="menu-item-desc">Matrix Cola · Matrix Cola Zero · Matrix Up · Matrix Up Zero · Matrix Orange</div>
+        <div class="menu-item-price">0.50 JD</div>
+      </div>
+
+```
+  <div class="menu-item reveal">
+    <div class="burger-img-placeholder">💧</div>
+    <div class="menu-item-header">
+      <div class="menu-item-icon">💧</div>
+      <div class="menu-item-name">Water</div>
+    </div>
+    <div class="menu-item-price">0.35 JD</div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
 
 <!-- LOCATIONS -->
 
-<div class="locations-section">
-  <div style="max-width:900px; margin:0 auto; padding:0 24px;">
-    <div class="section-header">
-      <span class="section-badge">📍 OUR LOCATIONS</span>
-      <h2 class="section-title">مقرات الجيش</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="loc-grid">
-      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
-        <div class="loc-num">01</div>
-        <div class="loc-name">7TH CIRCLE</div>
-        <div class="loc-name-ar">الدوار السابع</div>
-        <span class="loc-btn">📍 افتح الخريطة</span>
-      </a>
-      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
-        <div class="loc-num">02</div>
-        <div class="loc-name">AL JUBAIHA</div>
-        <div class="loc-name-ar">الجبيهة</div>
-        <span class="loc-btn">📍 افتح الخريطة</span>
-      </a>
-      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
-        <div class="loc-num">03</div>
-        <div class="loc-name">MARJ AL HAMAM</div>
-        <div class="loc-name-ar">مرج الحمام</div>
-        <span class="loc-btn">📍 افتح الخريطة</span>
-      </a>
-      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
-        <div class="loc-num">04</div>
-        <div class="loc-name">TABARBOUR</div>
-        <div class="loc-name-ar">تبربور</div>
-        <span class="loc-btn">📍 افتح الخريطة</span>
-      </a>
-      <a href="https://maps.app.goo.gl" target="_blank" class="loc-card">
-        <div class="loc-num">05</div>
-        <div class="loc-name">AIRPORT ROAD</div>
-        <div class="loc-name-ar">دوار الواحة — The Good Food Court</div>
-        <span class="loc-btn">📍 افتح الخريطة</span>
-      </a>
-    </div>
+<section class="locations" id="locations">
+  <div class="section-header reveal">
+    <span class="section-label">Find Your Base</span>
+    <h2 class="section-title">الفروع · <span>LOCATIONS</span></h2>
+    <div class="section-line"></div>
   </div>
+
+  <div class="locations-grid">
+    <div class="location-card reveal">
+      <div class="location-number">01</div>
+      <div class="location-icon">📍</div>
+      <div class="location-name">7th Circle</div>
+      <div class="location-arabic">الدوار السابع</div>
+      <div class="location-sub">المقر الرئيسي · HQ</div>
+    </div>
+
+```
+<div class="location-card reveal">
+  <div class="location-number">02</div>
+  <div class="location-icon">📍</div>
+  <div class="location-name">Al Jubaiha</div>
+  <div class="location-arabic">الجبيهة</div>
+  <div class="location-sub">المقر الثاني</div>
 </div>
 
-<div class="divider"></div>
-
-<!-- HOURS -->
-
-<div style="background: var(--army-dark); padding: 64px 24px;">
-  <div style="max-width:900px; margin:0 auto;">
-    <div class="section-header">
-      <span class="section-badge">🕐 SERVICE HOURS</span>
-      <h2 class="section-title">أوقات الخدمة</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="hours-box">
-      <span class="hours-icon">⏱️</span>
-      <div class="hours-title">نفتح أبوابنا يومياً</div>
-      <div class="hours-time">11:00 AM — 1:00 AM</div>
-      <div class="hours-sub">من الأحد إلى السبت · جميع الفروع</div>
-    </div>
-  </div>
+<div class="location-card reveal">
+  <div class="location-number">03</div>
+  <div class="location-icon">📍</div>
+  <div class="location-name">Marj Al Hamam</div>
+  <div class="location-arabic">مرج الحمام</div>
+  <div class="location-sub">المقر الثالث</div>
 </div>
 
-<div class="divider"></div>
-
-<!-- REVIEWS -->
-
-<div class="reviews-section">
-  <div style="max-width:900px; margin:0 auto; padding:0 24px;">
-    <div class="section-header">
-      <span class="section-badge">⭐ BATTLE REPORTS</span>
-      <h2 class="section-title">ما يقوله الجيش</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="reviews-grid">
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">أفضل برغر جربته في عمّان! اللحم طازج والنكهة لا تُوصف. Army Burger ما بخيب ظنك أبداً.</div>
-        <div class="review-author">— أحمد، عمّان</div>
-      </div>
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Fire Army هو المفضل عندي! الحرارة مظبوطة والجبنة تتسرب بكل لقمة. هذا مش برغر، هذا تجربة!</div>
-        <div class="review-author">— سارة، الدوار السابع</div>
-      </div>
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Fight Fries + Marines Burger = كومبو مثالي. الخدمة سريعة والأكل دائماً طازج. بجي كل أسبوع!</div>
-        <div class="review-author">— محمد، الجبيهة</div>
-      </div>
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">Avocados Explosion شي آخر! مزيج الأفوكادو مع اللحم البقري خلّاني أرجع مرتين بنفس اليوم 😅</div>
-        <div class="review-author">— ليلى، مرج الحمام</div>
-      </div>
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">الكميات كبيرة والأسعار ممتازة. الـ Molotov Box يكفي شخصين وبسعر خرافي. Army Burger الأفضل!</div>
-        <div class="review-author">— عمر، تبربور</div>
-      </div>
-      <div class="review-card">
-        <div class="review-quote">"</div>
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">طلبت عبر الواتساب ووصل الطلب سخن وممتاز. الـ Crispy Chicken هو الأفضل على الإطلاق في عمّان!</div>
-        <div class="review-author">— نور، الدوار الخامس</div>
-      </div>
-    </div>
-  </div>
+<div class="location-card reveal">
+  <div class="location-number">04</div>
+  <div class="location-icon">📍</div>
+  <div class="location-name">Tabarbour</div>
+  <div class="location-arabic">تبربور</div>
+  <div class="location-sub">المقر الرابع</div>
 </div>
 
-<div class="divider"></div>
+<div class="location-card reveal">
+  <div class="location-number">05</div>
+  <div class="location-icon">📍</div>
+  <div class="location-name">Airport Road</div>
+  <div class="location-arabic">دوار الواحة · طريق المطار</div>
+  <div class="location-sub">The Good Food Court · بجانب طواحين الهوا</div>
+</div>
+```
 
-<!-- CTA STRIP -->
+  </div>
+</section>
 
-<div class="cta-strip">
-  <h2>جاهز تخوض المعركة؟ 🍔</h2>
-  <p>اطلب الآن عبر واتساب أو تابعنا على إنستقرام</p>
-  <div class="cta-btns">
-    <a href="https://wa.me/96279700706" target="_blank" class="btn-primary">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      اطلب عبر واتساب — 079 0700 706
+<!-- CTA -->
+
+<div class="cta-section" id="contact">
+  <h2 class="cta-title reveal">جاهز تطلب؟</h2>
+  <p class="cta-subtitle reveal">تواصل معنا عبر واتساب أو تابعنا على انستاغرام لأحدث العروض</p>
+  <div class="cta-buttons reveal">
+    <a href="https://wa.me/96279070706" target="_blank" class="btn-whatsapp" style="clip-path:none;border-radius:3px;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      WhatsApp: 079 0700 706
     </a>
-    <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="btn-secondary">
-      📸 تابعنا على إنستقرام @armyburgerjo
+    <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="btn-outline" style="clip-path:none;border-radius:3px;">
+      📸 @armyburgerjo
     </a>
   </div>
 </div>
@@ -990,16 +1501,76 @@ to   { opacity:1; transform: translateY(0); }
 <!-- FOOTER -->
 
 <footer>
-  <div class="footer-logo">ARMY BURGER</div>
-  <div class="footer-phone">+962 79 0700 706</div>
-  <div class="footer-links">
-    <a href="https://www.instagram.com/armyburgerjo" target="_blank">Instagram</a>
-    <a href="https://wa.me/96279700706" target="_blank">WhatsApp</a>
-    <a href="#menu">المنيو</a>
-    <a href="#locations">الفروع</a>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">ARMY BURGER</div>
+      <div class="footer-tagline">Sturdy Burgers · عمّان، الأردن</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#menu">المنيو</a></li>
+      <li><a href="#locations">الفروع</a></li>
+      <li><a href="#hours">أوقات العمل</a></li>
+      <li><a href="https://wa.me/96279070706" target="_blank">تواصل معنا</a></li>
+    </ul>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/armyburgerjo" target="_blank" class="social-btn" title="Instagram">📸</a>
+      <a href="https://wa.me/96279070706" target="_blank" class="social-btn" title="WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      </a>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 Army Burger · Sturdy Burgers · Amman, Jordan · جميع الحقوق محفوظة</div>
+  <div class="footer-bottom">
+    © 2025 Army Burger Jordan · All Rights Reserved · عمّان، الأردن
+  </div>
 </footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+// Generate floating stars
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 12; i++) {
+  const star = document.createElement('span');
+  star.className = 'star';
+  star.textContent = '★';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.animationDelay = Math.random() * 6 + 's';
+  star.style.animationDuration = (4 + Math.random() * 4) + 's';
+  starsEl.appendChild(star);
+}
+
+// Tab switching
+function showTab(id) {
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+  // Retrigger reveal for new panel items
+  setTimeout(() => {
+    document.querySelectorAll('#tab-' + id + ' .reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 50);
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Scroll top button
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollBtn.classList.toggle('visible', window.scrollY > 500);
+});
+</script>
 
 </body>
 </html>
